@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		83100FF52820EBBD0091500F /* FirstStrategyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83100FF42820EBBD0091500F /* FirstStrategyViewModel.swift */; };
 		833BBBF5281FC41400362C84 /* FirstStrategyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833BBBF4281FC41400362C84 /* FirstStrategyProtocol.swift */; };
 		833BBBF7281FC43800362C84 /* FirstStrategyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833BBBF6281FC43800362C84 /* FirstStrategyViewController.swift */; };
 		833BBBF9281FC45900362C84 /* FirstStrategyViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 833BBBF8281FC45900362C84 /* FirstStrategyViewController.storyboard */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		83100FF42820EBBD0091500F /* FirstStrategyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstStrategyViewModel.swift; sourceTree = "<group>"; };
 		833BBBF4281FC41400362C84 /* FirstStrategyProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstStrategyProtocol.swift; sourceTree = "<group>"; };
 		833BBBF6281FC43800362C84 /* FirstStrategyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstStrategyViewController.swift; sourceTree = "<group>"; };
 		833BBBF8281FC45900362C84 /* FirstStrategyViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FirstStrategyViewController.storyboard; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				833BBBFE281FCBAB00362C84 /* MovieModel.swift */,
 				833BBBF6281FC43800362C84 /* FirstStrategyViewController.swift */,
 				83A109AE281FD4280058CA5C /* FirstStrategyCollectionViewCell.swift */,
+				83100FF42820EBBD0091500F /* FirstStrategyViewModel.swift */,
 				833BBBF8281FC45900362C84 /* FirstStrategyViewController.storyboard */,
 				83572F27281FC03400B329DE /* Main.storyboard */,
 				833BBBFA281FC47F00362C84 /* APIManager.swift */,
@@ -168,6 +171,7 @@
 				83572F24281FC03400B329DE /* SceneDelegate.swift in Sources */,
 				833BBBF7281FC43800362C84 /* FirstStrategyViewController.swift in Sources */,
 				833BBBF5281FC41400362C84 /* FirstStrategyProtocol.swift in Sources */,
+				83100FF52820EBBD0091500F /* FirstStrategyViewModel.swift in Sources */,
 				83A109AF281FD4280058CA5C /* FirstStrategyCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

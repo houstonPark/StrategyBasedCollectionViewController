@@ -36,6 +36,10 @@ protocol FirstStrategyProtocol {
     
     var cellReuseIdentifiers: [String] { get }
     
+    var interSectionSpacing: CGFloat { get }
+    
+    func numberOfItems(_ collectionView: UICollectionView, section: Int) -> Int
+    
     func loadTopView(view: UIView, subView: UIView)
     
     func sectionItemLayoutSize(_ collectionView: UICollectionView, at sectionIndex: Int) -> NSCollectionLayoutSize
@@ -44,9 +48,11 @@ protocol FirstStrategyProtocol {
     
     func createDiffableDataSource(_ collectionView: UICollectionView) -> UICollectionViewDiffableDataSource<FirstStrategySection, Movie>
     
-    func updateSnapshot() -> NSDiffableDataSourceSnapshot<FirstStrategySection, Movie>
+    func createSnapshot(item: [Movie]) -> NSDiffableDataSourceSnapshot<FirstStrategySection, Movie>
     
-    func updateSnapshot(response: URLResponse) -> NSDiffableDataSourceSnapshot<FirstStrategySection, Movie>
+    func updateSnapshot(_ collectionView: UICollectionView, searchTarget: String) -> NSDiffableDataSourceSnapshot<FirstStrategySection, Movie>
+    
+    func appendSnapshot(_ collectionView: UICollectionView, item: [Movie]) -> NSDiffableDataSourceSnapshot<FirstStrategySection, Movie>
     
     func requestForInit() -> apiRequestItem?
     

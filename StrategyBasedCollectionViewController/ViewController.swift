@@ -13,8 +13,10 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
+    
     @IBAction func Strategy1Action(_ sender: Any) {
-        
+        let firstStrategyVC = FirstStrategyViewController.create(strategy: FirstStrategy())
+        self.navigationController?.pushViewController(firstStrategyVC, animated: true)
     }
     
     @IBAction func Strategy2Action(_ sender: Any) {
