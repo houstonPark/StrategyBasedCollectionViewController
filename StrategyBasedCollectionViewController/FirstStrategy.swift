@@ -24,7 +24,7 @@ struct FirstStrategy: FirstStrategyProtocol {
     
     
     func numberOfItems(_ collectionView: UICollectionView, section: Int) -> Int {
-        return 3
+        return 1
     }
     
     func loadTopView(view: UIView, subView: UIView) {
@@ -38,54 +38,35 @@ struct FirstStrategy: FirstStrategyProtocol {
     }
     
     func sectionItemLayoutSize(_ collectionView: UICollectionView, at sectionIndex: Int) -> NSCollectionLayoutSize {
-        return NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(100))
+        return NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
     }
     
     func sectionGroupLayoutSize(_ collectionView: UICollectionView, at sectionIndex: Int) -> NSCollectionLayoutSize {
-        return sectionItemLayoutSize(collectionView, at: sectionIndex)
+        return NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(300))
     }
     
-    func createDiffableDataSource(_ collectionView: UICollectionView) -> UICollectionViewDiffableDataSource<FirstStrategySection, Movie> {
-        let diffableDataSource = UICollectionViewDiffableDataSource<FirstStrategySection, Movie>(collectionView: collectionView) { collectionView, indexPath, itemIdentifier in
-            
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FirstStrategyCollectionViewCell", for: indexPath) as! FirstStrategyCollectionViewCell
-            cell.configure(date: itemIdentifier.Year, title: itemIdentifier.Title)
-            return cell
-        }
-        
-        return diffableDataSource
-    }
-    
-    func createSnapshot(item: [Movie]) -> NSDiffableDataSourceSnapshot<FirstStrategySection, Movie> {
-        var snapshot = NSDiffableDataSourceSnapshot<FirstStrategySection, Movie>()
+    func createSnapshot(item: [Drink]) -> NSDiffableDataSourceSnapshot<FirstStrategySection, Drink> {
+        var snapshot = NSDiffableDataSourceSnapshot<FirstStrategySection, Drink>()
         snapshot.appendSections([.main])
-        snapshot.appendItems(item , toSection: .main)
-        
+        snapshot.appendItems(item)
         return snapshot
     }
     
-    func updateSnapshot(_ collectionView: UICollectionView, searchTarget: String) -> NSDiffableDataSourceSnapshot<FirstStrategySection, Movie> {
-        let dataSource = self.createDiffableDataSource(collectionView)
-        let currentSnapshot = dataSource.snapshot()
-        let currentItem = currentSnapshot.itemIdentifiers
-        let filteredItem = currentItem.filter { movie in
-            movie.Title.contains(searchTarget)
-        }
-        let filteredSnapshot = self.createSnapshot(item: filteredItem)
-        return filteredSnapshot
+    func updateSnapshot(_ collectionView: UICollectionView, searchTarget: String) -> NSDiffableDataSourceSnapshot<FirstStrategySection, Drink> {
+        var snapshot = NSDiffableDataSourceSnapshot<FirstStrategySection, Drink>()
+        return snapshot
     }
     
     
-    func appendSnapshot(_ collectionView: UICollectionView, item: [Movie]) -> NSDiffableDataSourceSnapshot<FirstStrategySection, Movie> {
-        var dataSource = self.createDiffableDataSource(collectionView)
-        var snapshot = dataSource.snapshot()
+    func appendSnapshot(_ collectionView: UICollectionView, item: [Drink]) -> NSDiffableDataSourceSnapshot<FirstStrategySection, Drink> {
+        var snapshot = NSDiffableDataSourceSnapshot<FirstStrategySection, Drink>()
         return snapshot
     }
     
     func requestForInit() -> apiRequestItem? {
         var queryItems = [URLQueryItem]()
-        queryItems.append(URLQueryItem(name: "r", value: "json"))
-        let item = apiRequestItem(url: APIManger.shared.baseURLString, header: APIManger.shared.headers, parameter: nil, queryItems: queryItems, method: "GET")
+        queryItems.append(URLQueryItem(name: "s", value: ""))
+        let item = apiRequestItem(url: APIManger.shared.baseURLString, header: nil, parameter: nil, queryItems: queryItems, method: "GET")
         return item
     }
     

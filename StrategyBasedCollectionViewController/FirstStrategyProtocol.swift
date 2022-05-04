@@ -46,13 +46,11 @@ protocol FirstStrategyProtocol {
     
     func sectionGroupLayoutSize(_ collectionView: UICollectionView, at sectionIndex: Int) -> NSCollectionLayoutSize
     
-    func createDiffableDataSource(_ collectionView: UICollectionView) -> UICollectionViewDiffableDataSource<FirstStrategySection, Movie>
+    func createSnapshot(item: [Drink]) -> NSDiffableDataSourceSnapshot<FirstStrategySection, Drink>
     
-    func createSnapshot(item: [Movie]) -> NSDiffableDataSourceSnapshot<FirstStrategySection, Movie>
+    func updateSnapshot(_ collectionView: UICollectionView, searchTarget: String) -> NSDiffableDataSourceSnapshot<FirstStrategySection, Drink>
     
-    func updateSnapshot(_ collectionView: UICollectionView, searchTarget: String) -> NSDiffableDataSourceSnapshot<FirstStrategySection, Movie>
-    
-    func appendSnapshot(_ collectionView: UICollectionView, item: [Movie]) -> NSDiffableDataSourceSnapshot<FirstStrategySection, Movie>
+    func appendSnapshot(_ collectionView: UICollectionView, item: [Drink]) -> NSDiffableDataSourceSnapshot<FirstStrategySection, Drink>
     
     func requestForInit() -> apiRequestItem?
     

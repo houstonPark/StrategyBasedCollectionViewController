@@ -9,11 +9,14 @@ import UIKit
 
 class FirstStrategyCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var titleLabel: UILabel!
-    
-    public func configure(date: String, title: String) {
-        self.dateLabel.text = date
-        self.titleLabel.text = title
+    @IBOutlet weak var alcoholic: UILabel!
+    @IBOutlet weak var instructions: UILabel!
+    @IBOutlet weak var dataLabel: UILabel!
+
+
+    public func configure(drink: String, instructions: String, date: String) {
+        self.alcoholic.text = drink
+        self.instructions.text = instructions
+        self.dataLabel.text = date
     }
 }

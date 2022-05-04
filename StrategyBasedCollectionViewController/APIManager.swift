@@ -7,17 +7,11 @@
 
 import Foundation
 
-//https://rapidapi.com/rapidapi/api/movie-database-alternative/
+//https://www.thecocktaildb.com/api.php
 
 class APIManger {
     
     static var shared = APIManger()
     
-    let baseURLString = "https://movie-database-alternative.p.rapidapi.com/"
-    
-    let headers = [
-        "X-RapidAPI-Host": "movie-database-alternative.p.rapidapi.com",
-        "X-RapidAPI-Key": "SIGN-UP-FOR-KEY"
-    ]
-
+    let baseURLString = "https://www.thecocktaildb.com/api/json/v1/1/search.php"
 }

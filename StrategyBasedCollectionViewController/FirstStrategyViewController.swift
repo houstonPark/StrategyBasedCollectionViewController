@@ -14,6 +14,7 @@ class FirstStrategyViewController: UIViewController, UICollectionViewDelegate {
     var viewModel: FirstStrategyViewModel!
     private var cancellable = Set<AnyCancellable>()
     private var topViewDataPublisher = PassthroughSubject<String,Never>()
+    private var dataSource: UICollectionViewDiffableDataSource<FirstStrategySection, Drink>?
     
     static func create(strategy: FirstStrategyProtocol) -> FirstStrategyViewController {
         let vc = UIStoryboard(name: "FirstStrategyViewController", bundle: .main).instantiateViewController(withIdentifier: "FirstStrategyViewController") as! FirstStrategyViewController
@@ -22,12 +23,11 @@ class FirstStrategyViewController: UIViewController, UICollectionViewDelegate {
         return vc
     }
     
-    @IBOutlet weak var topView: UIView!
+    
+    @IBOutlet weak var containerVStackView: UIStackView!
+    @IBOutlet weak var topTextField: UITextField!
+    @IBOutlet weak var topTextView: UITextView!
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet var textField: UITextField!
-    @IBOutlet var topStackView: UIStackView!
-    @IBOutlet weak var topViewHeight: NSLayoutConstraint!
-    @IBOutlet var topTextView: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,48 +35,35 @@ class FirstStrategyViewController: UIViewController, UICollectionViewDelegate {
         self.registerCells()
         self.setupCollectionViewLayout()
         self.setupCollectionViewDiffableDataSource()
-        self.combineTopViewDataPublisher()
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        self.view.addGestureRecognizer(tap)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.requestForInit()
+        self.requestForSearch()
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-    }
-    
+
     private func setupTopView() {
         switch strategy.topViewType {
-        case .stackView:
-            topView.isHidden = true
-            //strategy.loadTopView(view: self.topView, subView: self.topStackView)
+        case .stackView, .unknown:
+            self.topTextView.isHidden = true
+            self.topTextField.isHidden = true
         case .textField:
-            NotificationCenter.default.addObserver(self, selector: #selector(textFieldDidChange(_:)), name: UITextField.textDidChangeNotification, object: self.textField)
-            self.topView = self.textField
-            //strategy.loadTopView(view: self.topView, subView: self.textField)
+            self.topTextView.isHidden = true
         case .textView:
-            topView.isHidden = true
-            //strategy.loadTopView(view: self.topView, subView: self.topTextView)
-        case .unknown:
-            topView.isHidden = true
+            self.topTextField.isHidden = true
         }
     }
-    
-    private func combineTopViewDataPublisher() {
-        self.topViewDataPublisher
-            .sink { publishedString in
-                let updatedSnapshot = self.strategy.updateSnapshot(self.collectionView, searchTarget: publishedString)
-                self.strategy.createDiffableDataSource(self.collectionView).apply(updatedSnapshot)
-            }
-            .store(in: &self.cancellable)
+
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
-    
+
     private func registerCells() {
         strategy.cellReuseIdentifiers.forEach { identifiers in
-            self.collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: identifiers)
+            self.collectionView.register(UINib(nibName: identifiers, bundle: .main), forCellWithReuseIdentifier: identifiers)
         }
     }
     
@@ -95,43 +82,94 @@ class FirstStrategyViewController: UIViewController, UICollectionViewDelegate {
             let section = NSCollectionLayoutSection(group: group)
             return section
         }
-        layout.configuration.interSectionSpacing = strategy.interSectionSpacing
         
         self.collectionView.collectionViewLayout = layout
     }
     
     private func setupCollectionViewDiffableDataSource() {
-        self.collectionView.dataSource = strategy.createDiffableDataSource(self.collectionView)
+        self.dataSource = UICollectionViewDiffableDataSource<FirstStrategySection, Drink>(collectionView: self.collectionView) { collectionView, indexPath, itemIdentifier in
+
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.strategy.cellReuseIdentifiers[indexPath.section], for: indexPath) as! FirstStrategyCollectionViewCell
+
+            guard let alcoholic = itemIdentifier.strDrink, let instructions = itemIdentifier.strInstructions, let date = itemIdentifier.dateModified else { return cell }
+            
+            cell.configure(drink: alcoholic, instructions: instructions, date: date)
+            return cell
+        }
     }
     
     private func requestForInit() {
         guard let item = strategy.requestForInit() else { return }
-        
         let sessionSubscriber = self.viewModel.request(item: item)
-        print(sessionSubscriber)
         sessionSubscriber
             .sink { completion in
                 switch completion {
+                case .finished:
+                    break
                 case let .failure(error):
-                    print("URLError", error)
-                    break
-                default:
-                    break
+                    print("ERROR:", error.localizedDescription)
                 }
-            } receiveValue: { movies in
-                print(movies)
-                self.strategy.createDiffableDataSource(self.collectionView).apply(self.strategy.createSnapshot(item: movies.Search), animatingDifferences: true)
+            } receiveValue: { drinks in
+                DispatchQueue.main.sync {
+                    guard let drinks = drinks.drinks, let dataSource = self.dataSource else { return }
+                    let snapshot = self.strategy.createSnapshot(item: drinks)
+
+                    dataSource.apply(snapshot)
+                }
+            }
+            .store(in: &self.cancellable)
+    }
+
+    private func requestForSearch() {
+        self.topTextField.textPublisher
+            .sink { text in
+                let item = apiRequestItem(url: APIManger.shared.baseURLString, header: nil, parameter: nil, queryItems: [URLQueryItem(name: "s", value: text)], method: "GET")
+                self.viewModel.request(item: item)
+                    .sink { completion in
+                        switch completion {
+                        case .finished:
+                            break
+                        case let .failure(error):
+                            print("ERROR:", error.localizedDescription)
+                        }
+                    } receiveValue: { drinks in
+                        DispatchQueue.main.async {
+                            guard let drinks = drinks.drinks, let dataSource = self.dataSource else { return }
+                            let snapshot = self.strategy.createSnapshot(item: drinks)
+
+                            dataSource.apply(snapshot)
+                        }
+                    }
+                    .store(in: &self.cancellable)
+
             }
             .store(in: &self.cancellable)
     }
 }
 
-//MARK: - if topView() is textField
+//MARK: - UITextField textPublisher
 
-extension FirstStrategyViewController: UITextFieldDelegate {
+extension UITextField {
 
-    @objc func textFieldDidChange(_ notification: Notification) {
-        guard let text = self.textField.text else { return }
-        self.topViewDataPublisher.send(text)
+    var textPublisher: AnyPublisher<String?, Never> {
+        NotificationCenter.default.publisher(for: UITextField.textDidChangeNotification, object: self)
+            .map {
+                ($0.object as? UITextField)?.text
+            }
+            .eraseToAnyPublisher()
+    }
+
+}
+
+//MARK: - UITextView textPublisher
+
+extension UITextView {
+
+    var textPublisher: AnyPublisher<String?, Never> {
+        NotificationCenter.default.publisher(for: UITextView.textDidChangeNotification, object: self)
+            .map {
+                ($0.object as? UITextView)?.text
+            }
+            .eraseToAnyPublisher()
     }
 }
