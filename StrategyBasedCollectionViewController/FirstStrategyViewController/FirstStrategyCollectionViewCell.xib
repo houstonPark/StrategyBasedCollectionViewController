@@ -21,27 +21,27 @@
                         <rect key="frame" x="20" y="20" width="738" height="260"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CIr-ay-fwi">
-                                <rect key="frame" x="0.0" y="0.0" width="738" height="30"/>
+                                <rect key="frame" x="0.0" y="0.0" width="738" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="ak6-kR-7iP"/>
+                                    <constraint firstAttribute="height" constant="40" id="ak6-kR-7iP"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PN3-YK-Ahi">
-                                <rect key="frame" x="0.0" y="30" width="738" height="215"/>
+                                <rect key="frame" x="0.0" y="40" width="738" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="eHn-dL-NVe"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n4s-ud-Qpe">
-                                <rect key="frame" x="0.0" y="245" width="738" height="15"/>
+                                <rect key="frame" x="0.0" y="240" width="738" height="20"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="15" id="5ia-7l-SVB"/>
+                                    <constraint firstAttribute="height" constant="20" id="5ia-7l-SVB"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>

@@ -11,7 +11,7 @@ import UIKit
 
 
 struct FirstStrategy: FirstStrategyProtocol {
-    
+
     var interSectionSpacing: CGFloat = 10
     
     var topViewType: TopViewType = .textField
@@ -78,5 +78,7 @@ struct FirstStrategy: FirstStrategyProtocol {
         return nil
     }
     
-    
+    func selectCell(_ collectionView: UICollectionView, at selectedItemAt: IndexPath) {
+        
+    }
 }

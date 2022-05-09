@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="FirstStrategyDetailCollectionViewCell" reuseIdentifier="FirstStrategyDetailCollectionViewCell" id="Jz7-qT-L3z" customClass="FirstStrategyDetailCollectionViewCell" customModule="StrategyBasedCollectionViewController" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="424" height="500"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="eGF-cD-0Dq">
+                <rect key="frame" x="0.0" y="0.0" width="424" height="500"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="R5k-Yc-xa7">
+                        <rect key="frame" x="0.0" y="0.0" width="424" height="500"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dsw-uT-LxO">
+                                <rect key="frame" x="0.0" y="0.0" width="424" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="ObV-gw-73V"/>
+                                </constraints>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="di3-2Z-4Vy">
+                                <rect key="frame" x="0.0" y="300" width="424" height="200"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="R5k-Yc-xa7" firstAttribute="top" secondItem="eGF-cD-0Dq" secondAttribute="top" id="BYv-Z5-Acx"/>
+                    <constraint firstItem="R5k-Yc-xa7" firstAttribute="leading" secondItem="eGF-cD-0Dq" secondAttribute="leading" id="VRw-L7-gZS"/>
+                    <constraint firstAttribute="bottom" secondItem="R5k-Yc-xa7" secondAttribute="bottom" id="aEq-Zi-f38"/>
+                    <constraint firstAttribute="trailing" secondItem="R5k-Yc-xa7" secondAttribute="trailing" id="kHQ-tr-h2g"/>
+                </constraints>
+            </collectionViewCellContentView>
+            <size key="customSize" width="424" height="279"/>
+            <connections>
+                <outlet property="imageView" destination="dsw-uT-LxO" id="Qyf-39-r1b"/>
+                <outlet property="textView" destination="di3-2Z-4Vy" id="Nts-hK-aXa"/>
+            </connections>
+            <point key="canvasLocation" x="152.17391304347828" y="173.10267857142856"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

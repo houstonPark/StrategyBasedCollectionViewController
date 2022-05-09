@@ -58,4 +58,6 @@ protocol FirstStrategyProtocol {
     
     func requestFromCollectionView() -> apiRequestItem?
     
+    func selectCell(_ collectionView: UICollectionView, at selectedItemAt: IndexPath)
+    
 }

@@ -13,7 +13,6 @@ class FirstStrategyViewController: UIViewController, UICollectionViewDelegate {
     var strategy: FirstStrategyProtocol!
     var viewModel: FirstStrategyViewModel!
     private var cancellable = Set<AnyCancellable>()
-    private var topViewDataPublisher = PassthroughSubject<String,Never>()
     private var dataSource: UICollectionViewDiffableDataSource<FirstStrategySection, Drink>?
     
     static func create(strategy: FirstStrategyProtocol) -> FirstStrategyViewController {
@@ -43,6 +42,10 @@ class FirstStrategyViewController: UIViewController, UICollectionViewDelegate {
         super.viewWillAppear(animated)
         self.requestForInit()
         self.requestForSearch()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.strategy.selectCell(collectionView, at: indexPath)
     }
 
     private func setupTopView() {
