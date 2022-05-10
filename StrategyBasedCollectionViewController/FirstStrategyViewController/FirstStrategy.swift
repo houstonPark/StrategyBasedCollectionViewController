@@ -22,19 +22,10 @@ struct FirstStrategy: FirstStrategyProtocol {
     
     var cellReuseIdentifiers: [String] = ["FirstStrategyCollectionViewCell"]
     
+    var createSnapshotItem: [Drink] = []
     
     func numberOfItems(_ collectionView: UICollectionView, section: Int) -> Int {
         return 1
-    }
-    
-    func loadTopView(view: UIView, subView: UIView) {
-        view.addSubview(subView)
-        
-        let leftConstraint = subView.leftAnchor.constraint(equalTo: view.leftAnchor)
-        let rightConstraint = subView.rightAnchor.constraint(equalTo: view.rightAnchor)
-        let topConstraint = subView.topAnchor.constraint(equalTo: view.topAnchor)
-        let bottomConstraint = subView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        subView.addConstraints([leftConstraint, rightConstraint, topConstraint, bottomConstraint])
     }
     
     func sectionItemLayoutSize(_ collectionView: UICollectionView, at sectionIndex: Int) -> NSCollectionLayoutSize {
@@ -45,21 +36,17 @@ struct FirstStrategy: FirstStrategyProtocol {
         return NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(300))
     }
     
+    func createSnapshot() -> NSDiffableDataSourceSnapshot<FirstStrategySection, Drink> {
+        var snapshot = NSDiffableDataSourceSnapshot<FirstStrategySection, Drink>()
+        snapshot.appendSections([.main])
+        snapshot.appendItems(self.createSnapshotItem)
+        return snapshot
+    }
+    
     func createSnapshot(item: [Drink]) -> NSDiffableDataSourceSnapshot<FirstStrategySection, Drink> {
         var snapshot = NSDiffableDataSourceSnapshot<FirstStrategySection, Drink>()
         snapshot.appendSections([.main])
         snapshot.appendItems(item)
-        return snapshot
-    }
-    
-    func updateSnapshot(_ collectionView: UICollectionView, searchTarget: String) -> NSDiffableDataSourceSnapshot<FirstStrategySection, Drink> {
-        var snapshot = NSDiffableDataSourceSnapshot<FirstStrategySection, Drink>()
-        return snapshot
-    }
-    
-    
-    func appendSnapshot(_ collectionView: UICollectionView, item: [Drink]) -> NSDiffableDataSourceSnapshot<FirstStrategySection, Drink> {
-        var snapshot = NSDiffableDataSourceSnapshot<FirstStrategySection, Drink>()
         return snapshot
     }
     
@@ -78,7 +65,14 @@ struct FirstStrategy: FirstStrategyProtocol {
         return nil
     }
     
-    func selectCell(_ collectionView: UICollectionView, at selectedItemAt: IndexPath) {
-        
+    func selectCell(_ navigationController: UINavigationController?, collectionView: UICollectionView, at selectedItemAt: IndexPath) {
+        print(1)
+        guard let dataSource = collectionView.dataSource as? UICollectionViewDiffableDataSource<FirstStrategySection, Drink> else { return }
+        print(2)
+        guard let item = dataSource.itemIdentifier(for: selectedItemAt) else { return }
+        print(3)
+        let vc = FirstStrategyViewController.create(strategy: FirstStrategyDetail(item: [item]))
+        print(4)
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

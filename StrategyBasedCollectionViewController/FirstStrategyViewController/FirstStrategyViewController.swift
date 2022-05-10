@@ -34,18 +34,29 @@ class FirstStrategyViewController: UIViewController, UICollectionViewDelegate {
         self.registerCells()
         self.setupCollectionViewLayout()
         self.setupCollectionViewDiffableDataSource()
-        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
-        self.view.addGestureRecognizer(tap)
+        self.collectionView.keyboardDismissMode = .onDrag
+//        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+//        tap.cancelsTouchesInView = true
+//        self.view.addGestureRecognizer(tap)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.requestForInit()
+        if self.strategy.createSnapshotItem.isEmpty {
+            self.requestForInit()
+        }
+        else {
+            if let dataSource = dataSource {
+                let snapshot = self.strategy.createSnapshot()
+                dataSource.apply(snapshot)
+            }
+        }
         self.requestForSearch()
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.strategy.selectCell(collectionView, at: indexPath)
+        print(0)
+        self.strategy.selectCell(self.navigationController, collectionView: collectionView, at: indexPath)
     }
 
     private func setupTopView() {

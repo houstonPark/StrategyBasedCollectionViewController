@@ -38,26 +38,24 @@ protocol FirstStrategyProtocol {
     
     var interSectionSpacing: CGFloat { get }
     
-    func numberOfItems(_ collectionView: UICollectionView, section: Int) -> Int
+    var createSnapshotItem: [Drink] { get }
     
-    func loadTopView(view: UIView, subView: UIView)
+    func numberOfItems(_ collectionView: UICollectionView, section: Int) -> Int
     
     func sectionItemLayoutSize(_ collectionView: UICollectionView, at sectionIndex: Int) -> NSCollectionLayoutSize
     
     func sectionGroupLayoutSize(_ collectionView: UICollectionView, at sectionIndex: Int) -> NSCollectionLayoutSize
     
+    func createSnapshot() -> NSDiffableDataSourceSnapshot<FirstStrategySection, Drink>
+    
     func createSnapshot(item: [Drink]) -> NSDiffableDataSourceSnapshot<FirstStrategySection, Drink>
-    
-    func updateSnapshot(_ collectionView: UICollectionView, searchTarget: String) -> NSDiffableDataSourceSnapshot<FirstStrategySection, Drink>
-    
-    func appendSnapshot(_ collectionView: UICollectionView, item: [Drink]) -> NSDiffableDataSourceSnapshot<FirstStrategySection, Drink>
-    
+
     func requestForInit() -> apiRequestItem?
     
     func requestFromHeaderView() -> apiRequestItem?
     
     func requestFromCollectionView() -> apiRequestItem?
     
-    func selectCell(_ collectionView: UICollectionView, at selectedItemAt: IndexPath)
+    func selectCell(_ navigationController: UINavigationController?, collectionView: UICollectionView, at selectedItemAt: IndexPath)
     
 }

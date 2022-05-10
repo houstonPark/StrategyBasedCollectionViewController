@@ -45,6 +45,7 @@
                     <constraint firstAttribute="trailing" secondItem="R5k-Yc-xa7" secondAttribute="trailing" id="kHQ-tr-h2g"/>
                 </constraints>
             </collectionViewCellContentView>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <size key="customSize" width="424" height="279"/>
             <connections>
                 <outlet property="imageView" destination="dsw-uT-LxO" id="Qyf-39-r1b"/>
