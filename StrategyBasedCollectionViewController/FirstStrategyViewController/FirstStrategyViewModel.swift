@@ -8,7 +8,7 @@
 import UIKit
 import Combine
 
-class FirstStrategyViewModel: ObservableObject {
+class FirstStrategyViewModel {
     
     private var strategy: FirstStrategyProtocol!
     private var cancellable = Set<AnyCancellable>()

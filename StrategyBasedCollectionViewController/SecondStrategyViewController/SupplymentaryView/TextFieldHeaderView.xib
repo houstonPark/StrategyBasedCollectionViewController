@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="TextFieldHeaderView" reuseIdentifier="TextFieldHeaderView" id="VDS-r1-ykI" customClass="TextFieldHeaderView" customModule="StrategyBasedCollectionViewController" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="67"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Insert drink name" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="iYH-Th-N4i">
+                    <rect key="frame" x="15" y="0.0" width="384" height="67"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="jud-yB-ZDS"/>
+            <constraints>
+                <constraint firstItem="iYH-Th-N4i" firstAttribute="top" secondItem="VDS-r1-ykI" secondAttribute="top" id="5Bh-CT-uGA"/>
+                <constraint firstItem="jud-yB-ZDS" firstAttribute="trailing" secondItem="iYH-Th-N4i" secondAttribute="trailing" constant="15" id="5ck-eS-4sj"/>
+                <constraint firstItem="jud-yB-ZDS" firstAttribute="bottom" secondItem="iYH-Th-N4i" secondAttribute="bottom" id="XNp-RQ-3Qh"/>
+                <constraint firstItem="iYH-Th-N4i" firstAttribute="leading" secondItem="jud-yB-ZDS" secondAttribute="leading" constant="15" id="ifu-Jb-sre"/>
+            </constraints>
+            <connections>
+                <outlet property="textField" destination="iYH-Th-N4i" id="H8f-3w-TIk"/>
+            </connections>
+            <point key="canvasLocation" x="-81.159420289855078" y="-6.3616071428571423"/>
+        </collectionReusableView>
+    </objects>
+</document>

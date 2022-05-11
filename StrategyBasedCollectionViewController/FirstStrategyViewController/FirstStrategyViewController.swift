@@ -102,13 +102,7 @@ class FirstStrategyViewController: UIViewController, UICollectionViewDelegate {
     
     private func setupCollectionViewDiffableDataSource() {
         self.dataSource = UICollectionViewDiffableDataSource<FirstStrategySection, Drink>(collectionView: self.collectionView) { collectionView, indexPath, itemIdentifier in
-
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.strategy.cellReuseIdentifiers[indexPath.section], for: indexPath) as! FirstStrategyCollectionViewCell
-
-            guard let alcoholic = itemIdentifier.strDrink, let instructions = itemIdentifier.strInstructions, let date = itemIdentifier.dateModified else { return cell }
-            
-            cell.configure(drink: alcoholic, instructions: instructions, date: date)
-            return cell
+            return self.strategy.configureCell(self.collectionView, cellItendifier: self.strategy.cellReuseIdentifiers[indexPath.section], indexPath: indexPath, item: itemIdentifier)
         }
     }
     

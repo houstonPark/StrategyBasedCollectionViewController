@@ -18,14 +18,6 @@ enum TopViewType {
     case unknown
 }
 
-struct apiRequestItem {
-    var url: String
-    var header: [String: String]?
-    var parameter: [String: String]?
-    var queryItems: [URLQueryItem]?
-    var method: String
-}
-
 protocol FirstStrategyProtocol {
     
     var topViewType: TopViewType { get }
@@ -58,4 +50,5 @@ protocol FirstStrategyProtocol {
     
     func selectCell(_ navigationController: UINavigationController?, collectionView: UICollectionView, at selectedItemAt: IndexPath)
     
+    func configureCell(_ collectionView: UICollectionView, cellItendifier: String, indexPath: IndexPath, item: Drink) -> UICollectionViewCell
 }

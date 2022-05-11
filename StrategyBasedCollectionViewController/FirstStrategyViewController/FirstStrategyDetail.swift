@@ -63,5 +63,10 @@ struct FirstStrategyDetail: FirstStrategyProtocol {
     
     func selectCell(_ navigationController: UINavigationController?, collectionView: UICollectionView,at selectedItemAt: IndexPath) {}
     
-    
+    func configureCell(_ collectionView: UICollectionView, cellItendifier: String, indexPath: IndexPath, item: Drink) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellItendifier, for: indexPath) as? FirstStrategyDetailCollectionViewCell else { return UICollectionViewCell() }
+        guard let imageURL = item.strDrinkThumb, let instructions = item.strInstructions else { return cell }
+        cell.configure(imageURL: imageURL, instruction: instructions)
+        return cell
+    }
 }

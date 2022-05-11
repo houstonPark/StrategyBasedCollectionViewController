@@ -21,10 +21,17 @@
 		83572F29281FC03400B329DE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83572F27281FC03400B329DE /* Main.storyboard */; };
 		83572F2B281FC03500B329DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83572F2A281FC03500B329DE /* Assets.xcassets */; };
 		83572F2E281FC03500B329DE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83572F2C281FC03500B329DE /* LaunchScreen.storyboard */; };
+		8392ABCA282AA6F500805418 /* SecondStrategyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8392ABC9282AA6F500805418 /* SecondStrategyProtocol.swift */; };
+		8392ABCC282AB57F00805418 /* SecondStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8392ABCB282AB57F00805418 /* SecondStrategy.swift */; };
+		8392ABCF282AB5E300805418 /* TextFieldHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8392ABCE282AB5E300805418 /* TextFieldHeaderView.xib */; };
+		8392ABD1282AB62100805418 /* TextFieldHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8392ABD0282AB62100805418 /* TextFieldHeaderView.swift */; };
 		8399700F2827D79A00686A72 /* FirstStrategyDetailCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8399700E2827D79A00686A72 /* FirstStrategyDetailCollectionViewCell.xib */; };
 		839970112827D87300686A72 /* FirstStrategyDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839970102827D87300686A72 /* FirstStrategyDetailCollectionViewCell.swift */; };
 		83A109AF281FD4280058CA5C /* FirstStrategyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A109AE281FD4280058CA5C /* FirstStrategyCollectionViewCell.swift */; };
 		83DFE4702828A8D2000F3E45 /* FirstStrategyDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DFE46F2828A8D2000F3E45 /* FirstStrategyDetail.swift */; };
+		83F9E580282BA2C700E83921 /* SecondStrategyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F9E57F282BA2C700E83921 /* SecondStrategyViewModel.swift */; };
+		83F9E582282BBB3A00E83921 /* SecondStrategyCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F9E581282BBB3A00E83921 /* SecondStrategyCollectionViewController.swift */; };
+		83F9E584282BBBAB00E83921 /* SecondStrategyCollectionViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83F9E583282BBBAB00E83921 /* SecondStrategyCollectionViewController.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,10 +51,17 @@
 		83572F2A281FC03500B329DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		83572F2D281FC03500B329DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		83572F2F281FC03500B329DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8392ABC9282AA6F500805418 /* SecondStrategyProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondStrategyProtocol.swift; sourceTree = "<group>"; };
+		8392ABCB282AB57F00805418 /* SecondStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondStrategy.swift; sourceTree = "<group>"; };
+		8392ABCE282AB5E300805418 /* TextFieldHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextFieldHeaderView.xib; sourceTree = "<group>"; };
+		8392ABD0282AB62100805418 /* TextFieldHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldHeaderView.swift; sourceTree = "<group>"; };
 		8399700E2827D79A00686A72 /* FirstStrategyDetailCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FirstStrategyDetailCollectionViewCell.xib; sourceTree = "<group>"; };
 		839970102827D87300686A72 /* FirstStrategyDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstStrategyDetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		83A109AE281FD4280058CA5C /* FirstStrategyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstStrategyCollectionViewCell.swift; sourceTree = "<group>"; };
 		83DFE46F2828A8D2000F3E45 /* FirstStrategyDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstStrategyDetail.swift; sourceTree = "<group>"; };
+		83F9E57F282BA2C700E83921 /* SecondStrategyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondStrategyViewModel.swift; sourceTree = "<group>"; };
+		83F9E581282BBB3A00E83921 /* SecondStrategyCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondStrategyCollectionViewController.swift; sourceTree = "<group>"; };
+		83F9E583282BBBAB00E83921 /* SecondStrategyCollectionViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SecondStrategyCollectionViewController.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +99,7 @@
 				83572F25281FC03400B329DE /* ViewController.swift */,
 				833BBBFE281FCBAB00362C84 /* Drink.swift */,
 				8399700D2827D73400686A72 /* FirstStrategyViewController */,
+				8392ABC8282AA69C00805418 /* SecondStrategyViewController */,
 				83572F27281FC03400B329DE /* Main.storyboard */,
 				833BBBFA281FC47F00362C84 /* APIManager.swift */,
 				83572F2A281FC03500B329DE /* Assets.xcassets */,
@@ -92,6 +107,28 @@
 				83572F2F281FC03500B329DE /* Info.plist */,
 			);
 			path = StrategyBasedCollectionViewController;
+			sourceTree = "<group>";
+		};
+		8392ABC8282AA69C00805418 /* SecondStrategyViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8392ABC9282AA6F500805418 /* SecondStrategyProtocol.swift */,
+				8392ABCB282AB57F00805418 /* SecondStrategy.swift */,
+				83F9E57F282BA2C700E83921 /* SecondStrategyViewModel.swift */,
+				83F9E581282BBB3A00E83921 /* SecondStrategyCollectionViewController.swift */,
+				83F9E583282BBBAB00E83921 /* SecondStrategyCollectionViewController.storyboard */,
+				8392ABCD282AB5C100805418 /* SupplymentaryView */,
+			);
+			path = SecondStrategyViewController;
+			sourceTree = "<group>";
+		};
+		8392ABCD282AB5C100805418 /* SupplymentaryView */ = {
+			isa = PBXGroup;
+			children = (
+				8392ABD0282AB62100805418 /* TextFieldHeaderView.swift */,
+				8392ABCE282AB5E300805418 /* TextFieldHeaderView.xib */,
+			);
+			path = SupplymentaryView;
 			sourceTree = "<group>";
 		};
 		8399700D2827D73400686A72 /* FirstStrategyViewController */ = {
@@ -171,9 +208,11 @@
 			files = (
 				83572F2E281FC03500B329DE /* LaunchScreen.storyboard in Resources */,
 				83572F2B281FC03500B329DE /* Assets.xcassets in Resources */,
+				83F9E584282BBBAB00E83921 /* SecondStrategyCollectionViewController.storyboard in Resources */,
 				8399700F2827D79A00686A72 /* FirstStrategyDetailCollectionViewCell.xib in Resources */,
 				83572F29281FC03400B329DE /* Main.storyboard in Resources */,
 				8316D77A28226915005C799F /* FirstStrategyCollectionViewCell.xib in Resources */,
+				8392ABCF282AB5E300805418 /* TextFieldHeaderView.xib in Resources */,
 				833BBBF9281FC45900362C84 /* FirstStrategyViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -185,15 +224,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8392ABCA282AA6F500805418 /* SecondStrategyProtocol.swift in Sources */,
 				833BBBFD281FC78E00362C84 /* FirstStrategy.swift in Sources */,
 				833BBBFB281FC47F00362C84 /* APIManager.swift in Sources */,
+				83F9E582282BBB3A00E83921 /* SecondStrategyCollectionViewController.swift in Sources */,
+				83F9E580282BA2C700E83921 /* SecondStrategyViewModel.swift in Sources */,
 				83572F26281FC03400B329DE /* ViewController.swift in Sources */,
 				839970112827D87300686A72 /* FirstStrategyDetailCollectionViewCell.swift in Sources */,
 				83572F22281FC03400B329DE /* AppDelegate.swift in Sources */,
 				833BBBFF281FCBAB00362C84 /* Drink.swift in Sources */,
 				83DFE4702828A8D2000F3E45 /* FirstStrategyDetail.swift in Sources */,
 				83572F24281FC03400B329DE /* SceneDelegate.swift in Sources */,
+				8392ABD1282AB62100805418 /* TextFieldHeaderView.swift in Sources */,
 				833BBBF7281FC43800362C84 /* FirstStrategyViewController.swift in Sources */,
+				8392ABCC282AB57F00805418 /* SecondStrategy.swift in Sources */,
 				833BBBF5281FC41400362C84 /* FirstStrategyProtocol.swift in Sources */,
 				83100FF52820EBBD0091500F /* FirstStrategyViewModel.swift in Sources */,
 				83A109AF281FD4280058CA5C /* FirstStrategyCollectionViewCell.swift in Sources */,

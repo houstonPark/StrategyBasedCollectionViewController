@@ -9,6 +9,15 @@ import Foundation
 
 //https://www.thecocktaildb.com/api.php
 
+struct apiRequestItem {
+    var url: String
+    var header: [String: String]?
+    var parameter: [String: String]?
+    var queryItems: [URLQueryItem]?
+    var method: String
+}
+
+
 class APIManger {
     
     static var shared = APIManger()

@@ -75,4 +75,11 @@ struct FirstStrategy: FirstStrategyProtocol {
         print(4)
         navigationController?.pushViewController(vc, animated: true)
     }
+    
+    func configureCell(_ collectionView: UICollectionView, cellItendifier: String, indexPath: IndexPath, item: Drink) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellItendifier, for: indexPath) as? FirstStrategyCollectionViewCell else { return UICollectionViewCell() }
+        guard let alcoholic = item.strDrink, let instructions = item.strInstructions, let date = item.dateModified else { return cell }
+        cell.configure(drink: alcoholic, instructions: instructions, date: date)
+        return cell
+    }
 }
