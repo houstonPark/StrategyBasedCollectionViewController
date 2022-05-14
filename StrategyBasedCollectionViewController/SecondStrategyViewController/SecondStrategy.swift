@@ -8,7 +8,9 @@
 import UIKit
 import Combine
 
-public var cancellable = Set<AnyCancellable>()
+class GlobalCancellable {
+    static var cancellable = Set<AnyCancellable>()
+}
 
 struct SecondStrategy: SecondStrategyProtocol {
     
@@ -150,9 +152,9 @@ struct SecondStrategy: SecondStrategyProtocol {
                                 print("Drinks:", Drinks)
                                 self.currentItems.value[identifiable] = Drinks.drinks
                             }
-                            .store(in: &cancellable)
+                            .store(in: &GlobalCancellable.cancellable)
                     }
-                    .store(in: &cancellable)
+                    .store(in: &GlobalCancellable.cancellable)
             default:
                 reuseableView = collectionView.dequeueReusableSupplementaryView(ofKind: elementKind, withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath)
             }
