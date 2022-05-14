@@ -31,7 +31,6 @@
 		83DFE4702828A8D2000F3E45 /* FirstStrategyDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DFE46F2828A8D2000F3E45 /* FirstStrategyDetail.swift */; };
 		83F9E580282BA2C700E83921 /* SecondStrategyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F9E57F282BA2C700E83921 /* SecondStrategyViewModel.swift */; };
 		83F9E582282BBB3A00E83921 /* SecondStrategyCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F9E581282BBB3A00E83921 /* SecondStrategyCollectionViewController.swift */; };
-		83F9E584282BBBAB00E83921 /* SecondStrategyCollectionViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83F9E583282BBBAB00E83921 /* SecondStrategyCollectionViewController.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,7 +60,6 @@
 		83DFE46F2828A8D2000F3E45 /* FirstStrategyDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstStrategyDetail.swift; sourceTree = "<group>"; };
 		83F9E57F282BA2C700E83921 /* SecondStrategyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondStrategyViewModel.swift; sourceTree = "<group>"; };
 		83F9E581282BBB3A00E83921 /* SecondStrategyCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondStrategyCollectionViewController.swift; sourceTree = "<group>"; };
-		83F9E583282BBBAB00E83921 /* SecondStrategyCollectionViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SecondStrategyCollectionViewController.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,7 +114,6 @@
 				8392ABCB282AB57F00805418 /* SecondStrategy.swift */,
 				83F9E57F282BA2C700E83921 /* SecondStrategyViewModel.swift */,
 				83F9E581282BBB3A00E83921 /* SecondStrategyCollectionViewController.swift */,
-				83F9E583282BBBAB00E83921 /* SecondStrategyCollectionViewController.storyboard */,
 				8392ABCD282AB5C100805418 /* SupplymentaryView */,
 			);
 			path = SecondStrategyViewController;
@@ -208,7 +205,6 @@
 			files = (
 				83572F2E281FC03500B329DE /* LaunchScreen.storyboard in Resources */,
 				83572F2B281FC03500B329DE /* Assets.xcassets in Resources */,
-				83F9E584282BBBAB00E83921 /* SecondStrategyCollectionViewController.storyboard in Resources */,
 				8399700F2827D79A00686A72 /* FirstStrategyDetailCollectionViewCell.xib in Resources */,
 				83572F29281FC03400B329DE /* Main.storyboard in Resources */,
 				8316D77A28226915005C799F /* FirstStrategyCollectionViewCell.xib in Resources */,

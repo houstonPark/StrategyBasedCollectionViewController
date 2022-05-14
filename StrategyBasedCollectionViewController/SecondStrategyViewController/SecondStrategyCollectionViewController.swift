@@ -8,71 +8,70 @@
 import UIKit
 import Combine
 
-class SecondStrategyCollectionViewController<Item>: UICollectionViewController where Item: Codable, Item: Hashable {
+class SecondStrategyCollectionViewController<Strategy>: UICollectionViewController where Strategy: SecondStrategyProtocol {
     
-    var strategy : SecondStrategyProtocol!
-    var viewModel : SecondStrategyViewModel<Item>!
-    private var dataSource : UICollectionViewDiffableDataSource<SecondStrategySection, Item>?
+    public var strategy: Strategy
     private var cancellable = Set<AnyCancellable>()
+    private var dataSource : UICollectionViewDiffableDataSource<SecondStrategySection, Strategy.collectionViewItemType>?
+    private var viewModel : SecondStrategyViewModel<Strategy.requestItemType>
     
-    static func create<vcItem>(strategy: SecondStrategyProtocol) -> SecondStrategyCollectionViewController<vcItem> where vcItem: Codable, vcItem: Hashable {
-        let vc = UIStoryboard(name: "SecondStrategyCollectionViewController", bundle: .main).instantiateViewController(withIdentifier: "SecondStrategyCollectionViewController") as! SecondStrategyCollectionViewController<vcItem>
-        vc.strategy = strategy
-        vc.viewModel = SecondStrategyViewModel<vcItem>()
-        return vc
+    init(strategy: Strategy) {
+        self.strategy = strategy
+        self.viewModel = SecondStrategyViewModel<Strategy.requestItemType>()
+        super.init(collectionViewLayout: strategy.compositionalLayout)
     }
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = .systemBackground
+        self.collectionView.backgroundColor = .systemBackground
         self.registerCells()
-        self.setupLayout()
         self.setupDataSource()
         self.subscribeCurrentItems()
         self.collectionView.keyboardDismissMode = .onDrag
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.createInitialSnapshot()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
     
     private func registerCells() {
         self.strategy.cellIndentifier.forEach {
-            self.collectionView.register(UINib(nibName: $0.value, bundle: .main), forCellWithReuseIdentifier: $0.value)
+            $0.value.forEach { identifier in
+                self.collectionView.register(UINib(nibName: identifier, bundle: .main), forCellWithReuseIdentifier: identifier)
+            }
         }
-        self.strategy.supplymentaryHeaderIdentifier.forEach {
+        self.strategy.supplementaryHeaderIdentifier.forEach {
             self.collectionView.register(UINib(nibName: $0.value, bundle: .main), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: $0.value)
         }
-        self.strategy.supplymentaryFooterIdentifier.forEach {
+        self.strategy.supplementaryFooterIdentifier.forEach {
             self.collectionView.register(UINib(nibName: $0.value, bundle: .main), forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: $0.value)
         }
     }
-    
-    private func setupLayout() {
-        let layout = UICollectionViewCompositionalLayout { sectionIndex, _ in
-            let itemSize = self.strategy.sectionItemLayoutSize(self.collectionView, at: sectionIndex)
-            let item = NSCollectionLayoutItem(layoutSize: itemSize)
 
-            let groupSize = self.strategy.sectionGroupLayoutSize(self.collectionView, at: sectionIndex)
-
-            let itemCount = self.strategy.numberOfItems(self.collectionView, section: sectionIndex)
-            let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitem: item, count: itemCount)
-
-            let section = NSCollectionLayoutSection(group: group)
-            return section
-        }
-        layout.configuration = strategy.compositionalLayoutConfigure
-        self.collectionView.collectionViewLayout = layout
-    }
-    
     private func setupDataSource() {
         self.dataSource = UICollectionViewDiffableDataSource(collectionView: self.collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
             guard let cellIdentifier = self.strategy.cellIndentifier[SecondStrategySection.allCases[indexPath.section]] else { return UICollectionViewCell() }
-            return self.strategy.configureCell(collectionView, cellItendifier: cellIdentifier, indexPath: indexPath, item: itemIdentifier)
+            return self.strategy.configureCell(collectionView, cellItendifiers: cellIdentifier, indexPath: indexPath, item: itemIdentifier)
         })
+        
+        self.dataSource?.supplementaryViewProvider = { (collectionView, kind, indexPath) -> UICollectionReusableView? in
+            let identifiable = SecondStrategySection.allCases[(indexPath as NSIndexPath).section]
+            // 그냥 indexPath.section 하면 터지는 오모한 버그 때문에 (indexPath as NSIndexPath).section 으로 해야지 안터진다... 왜지?
+            return self.strategy.supplementaryViewProvider(collectionView, elementKind: kind, identifiable: identifiable, indexPath: indexPath as NSIndexPath)
+        }
     }
-    
+
     private func subscribeCurrentItems() {
         self.strategy.currentItems
             .sink { _ in
@@ -80,34 +79,35 @@ class SecondStrategyCollectionViewController<Item>: UICollectionViewController w
             }
             .store(in: &self.cancellable)
     }
-    
+
     private func createInitialSnapshot() {
         if self.strategy.currentItems.value.isEmpty {
             guard let apiItem = self.strategy.requestForInit() else { return }
-            self.viewModel.request(apiItem: apiItem)
-                .sink { completion in
-                    switch completion {
-                    case let .failure(error):
-                        print("<Error>",error.localizedDescription)
-                    case .finished:
-                        break
-                    }
-                } receiveValue: { item in
-                    DispatchQueue.main.async {
-                        self.dataSourceApply()
-                    }
-                }
-                .store(in: &self.cancellable)
+            self.request(item: apiItem)
         }
         else {
             self.dataSourceApply()
         }
     }
-    
+
     private func dataSourceApply() {
-        guard let snapshot = self.strategy.createSnapshot() as? NSDiffableDataSourceSnapshot<SecondStrategySection, Item>, let dataSource = self.dataSource else {
-            return
-        }
-        dataSource.apply(snapshot)
+        let snapshot = self.strategy.createSnapshot()
+        self.dataSource?.apply(snapshot)
+        
+    }
+
+    private func request(item: apiRequestItem) {
+        self.viewModel.request(apiItem: item)
+            .sink { completion in
+                switch completion {
+                case let .failure(error):
+                    print("<Error>",error.localizedDescription)
+                case .finished:
+                    break
+                }
+            } receiveValue: { requestData in
+                self.strategy.convertDataToItem(requestData: requestData)
+            }
+            .store(in: &self.cancellable)
     }
 }

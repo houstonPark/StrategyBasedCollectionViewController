@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -15,14 +16,15 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Insert drink name" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="iYH-Th-N4i">
-                    <rect key="frame" x="15" y="0.0" width="384" height="67"/>
+                    <rect key="frame" x="15" y="30" width="384" height="37"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
             </subviews>
             <viewLayoutGuide key="safeArea" id="jud-yB-ZDS"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="iYH-Th-N4i" firstAttribute="top" secondItem="VDS-r1-ykI" secondAttribute="top" id="5Bh-CT-uGA"/>
+                <constraint firstItem="iYH-Th-N4i" firstAttribute="top" secondItem="VDS-r1-ykI" secondAttribute="top" constant="30" id="5Bh-CT-uGA"/>
                 <constraint firstItem="jud-yB-ZDS" firstAttribute="trailing" secondItem="iYH-Th-N4i" secondAttribute="trailing" constant="15" id="5ck-eS-4sj"/>
                 <constraint firstItem="jud-yB-ZDS" firstAttribute="bottom" secondItem="iYH-Th-N4i" secondAttribute="bottom" id="XNp-RQ-3Qh"/>
                 <constraint firstItem="iYH-Th-N4i" firstAttribute="leading" secondItem="jud-yB-ZDS" secondAttribute="leading" constant="15" id="ifu-Jb-sre"/>
@@ -33,4 +35,9 @@
             <point key="canvasLocation" x="-81.159420289855078" y="-6.3616071428571423"/>
         </collectionReusableView>
     </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

@@ -20,7 +20,9 @@ class ViewController: UIViewController {
     }
     
     @IBAction func Strategy2Action(_ sender: Any) {
-        
+        let secondStrategy = SecondStrategy()
+        let secondStrategyVC = SecondStrategyCollectionViewController<SecondStrategy>(strategy: secondStrategy)
+        self.navigationController?.pushViewController(secondStrategyVC, animated: true)
     }
 }
 
