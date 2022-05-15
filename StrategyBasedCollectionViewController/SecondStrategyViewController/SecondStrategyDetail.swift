@@ -9,7 +9,7 @@ import UIKit
 import Combine
 
 struct SecondStrategyDetail: SecondStrategyProtocol {
-    
+
     init(drink: Drink) {
         self.currentItems = .init([.main: [drink]])
         self.navigationTitle = drink.strDrink
@@ -51,8 +51,6 @@ struct SecondStrategyDetail: SecondStrategyProtocol {
     var compositionalLayoutConfigure: UICollectionViewCompositionalLayoutConfiguration = UICollectionViewCompositionalLayoutConfiguration()
     
     var currentItems: CurrentValueSubject<[SecondStrategySection : [Drink]], Never>
-    
-    var rightNavigationBarItem: UIBarButtonItem? = nil
     
     var navigationTitle: String?
     
@@ -115,7 +113,15 @@ struct SecondStrategyDetail: SecondStrategyProtocol {
         return UICollectionReusableView()
     }
     
-    func rightBarButtonAction(_ viewController: UIViewController) {}
+    var rightNavigationBarItems: [UIBarButtonItem]? = nil
     
-    func bindingRightBarButtonEnable(navigationItem: UIBarButtonItem?) {}
+    func rightBarButtonActions(_ viewController: UIViewController) -> [()] {
+        return []
+    }
+    
+    func bindingRightBarButtonEnable(navigationItems: [UIBarButtonItem]?) { }
+    
+    func createUIBarButton(index:Int, style: UIBarButtonItem.Style, title: String?, image: UIImage?) -> UIBarButtonItem {
+        return UIBarButtonItem()
+    }
 }

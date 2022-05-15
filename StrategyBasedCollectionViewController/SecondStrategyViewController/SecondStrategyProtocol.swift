@@ -36,8 +36,6 @@ protocol SecondStrategyProtocol {
     
     var currentItems: CurrentValueSubject<[SecondStrategySection: [collectionViewItemType]], Never> { get set }
     
-    var rightNavigationBarItem: UIBarButtonItem? { get }
-    
     var navigationTitle: String? { get }
         
     func numberOfItems(section: Int) -> Int
@@ -62,7 +60,11 @@ protocol SecondStrategyProtocol {
     
     func supplementaryViewProvider(_ collectionView: UICollectionView, elementKind: String, identifiable: SecondStrategySection, indexPath: NSIndexPath) -> UICollectionReusableView
     
-    func rightBarButtonAction(_ viewController: UIViewController)
+    var rightNavigationBarItems: [UIBarButtonItem]? { get }
     
-    func bindingRightBarButtonEnable(navigationItem: UIBarButtonItem?)
+    func rightBarButtonActions(_ viewController: UIViewController) -> [()]
+    
+    func bindingRightBarButtonEnable(navigationItems: [UIBarButtonItem]?)
+    
+    func createUIBarButton(index:Int, style: UIBarButtonItem.Style, title: String?, image: UIImage?) -> UIBarButtonItem
 }

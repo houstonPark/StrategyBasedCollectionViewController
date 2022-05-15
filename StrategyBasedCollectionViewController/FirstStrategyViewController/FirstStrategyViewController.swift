@@ -154,30 +154,3 @@ class FirstStrategyViewController: UIViewController, UICollectionViewDelegate {
             .store(in: &self.cancellable)
     }
 }
-
-//MARK: - UITextField textPublisher
-
-extension UITextField {
-
-    var textPublisher: AnyPublisher<String?, Never> {
-        NotificationCenter.default.publisher(for: UITextField.textDidChangeNotification, object: self)
-            .map {
-                ($0.object as? UITextField)?.text
-            }
-            .eraseToAnyPublisher()
-    }
-
-}
-
-//MARK: - UITextView textPublisher
-
-extension UITextView {
-
-    var textPublisher: AnyPublisher<String?, Never> {
-        NotificationCenter.default.publisher(for: UITextView.textDidChangeNotification, object: self)
-            .map {
-                ($0.object as? UITextView)?.text
-            }
-            .eraseToAnyPublisher()
-    }
-}

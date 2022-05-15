@@ -48,20 +48,23 @@ class SecondStrategyCollectionViewController<Strategy>: UICollectionViewControll
     
     private func setupNavigationBar() {
         self.setupNavigationItem()
-        self.strategy.bindingRightBarButtonEnable(navigationItem: self.navigationItem.rightBarButtonItem)
-        //self.navigationController?.title = self.strategy.navigationTitle
+        self.strategy.bindingRightBarButtonEnable(navigationItems: self.navigationItem.rightBarButtonItems)
         self.navigationItem.title = self.strategy.navigationTitle
     }
     
     private func setupNavigationItem() {
-        guard let rightBarButton = self.strategy.rightNavigationBarItem else { return }
-        rightBarButton.target = self
-        rightBarButton.action = #selector(rightBarButtonAction)
-        self.navigationItem.rightBarButtonItem = rightBarButton
+        guard let rightBarButtons = self.strategy.rightNavigationBarItems else { return }
+        var items = [UIBarButtonItem]()
+        for i in 0..<rightBarButtons.count {
+            let button = UIBarButtonItem(image: rightBarButtons[i].image, style: rightBarButtons[i].style, target: self, action: #selector(navigationButtonAction(_:)))
+            
+            items.append(button)
+        }
+        self.navigationItem.rightBarButtonItems = items
     }
     
-    @objc private func rightBarButtonAction() {
-        self.strategy.rightBarButtonAction(self)
+    @objc private func navigationButtonAction(_ sender: UIBarButtonItem) {
+        self.strategy.rightBarButtonActions(self)[sender.tag]
     }
     
     private func registerCells() {
