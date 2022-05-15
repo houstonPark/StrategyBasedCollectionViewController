@@ -35,6 +35,10 @@ protocol SecondStrategyProtocol {
     var compositionalLayoutConfigure: UICollectionViewCompositionalLayoutConfiguration { get }
     
     var currentItems: CurrentValueSubject<[SecondStrategySection: [collectionViewItemType]], Never> { get set }
+    
+    var rightNavigationBarItem: UIBarButtonItem? { get }
+    
+    var navigationTitle: String? { get }
         
     func numberOfItems(section: Int) -> Int
     
@@ -52,9 +56,13 @@ protocol SecondStrategyProtocol {
     
     func convertDataToItem<RequestData>(requestData: RequestData) where RequestData : Hashable & Codable
     
-    func selectCell(_ navigationController: UINavigationController?, collectionView: UICollectionView, at selectedItemAt: IndexPath)
+    func selectCell(_ viewController: UIViewController, collectionView: UICollectionView, at selectedItemAt: IndexPath)
     
     func configureCell(_ collectionView: UICollectionView, cellItendifiers: [String], indexPath: IndexPath, item: collectionViewItemType) -> UICollectionViewCell
     
-    mutating func supplementaryViewProvider(_ collectionView: UICollectionView, elementKind: String, identifiable: SecondStrategySection, indexPath: NSIndexPath) -> UICollectionReusableView
+    func supplementaryViewProvider(_ collectionView: UICollectionView, elementKind: String, identifiable: SecondStrategySection, indexPath: NSIndexPath) -> UICollectionReusableView
+    
+    func rightBarButtonAction(_ viewController: UIViewController)
+    
+    func bindingRightBarButtonEnable(navigationItem: UIBarButtonItem?)
 }

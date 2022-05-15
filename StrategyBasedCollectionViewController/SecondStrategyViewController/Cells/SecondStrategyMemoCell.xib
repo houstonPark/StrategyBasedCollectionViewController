@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="SecondStrategyMemoCell" reuseIdentifier="SecondStrategyMemoCell" id="Yxh-TP-BkA" customClass="SecondStrategyMemoCell" customModule="StrategyBasedCollectionViewController" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="453" height="272"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Gre-01-SUN">
+                <rect key="frame" x="0.0" y="0.0" width="453" height="272"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="O49-sl-LYD">
+                        <rect key="frame" x="15" y="15" width="423" height="257"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5vn-fT-AoX">
+                                <rect key="frame" x="0.0" y="0.0" width="423" height="227"/>
+                                <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NYS-3b-bqm">
+                                <rect key="frame" x="0.0" y="227" width="423" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="wuf-9N-3GK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="O49-sl-LYD" firstAttribute="top" secondItem="Gre-01-SUN" secondAttribute="top" constant="15" id="H1u-4h-BuV"/>
+                    <constraint firstItem="O49-sl-LYD" firstAttribute="leading" secondItem="Gre-01-SUN" secondAttribute="leading" constant="15" id="cKR-jd-J8C"/>
+                    <constraint firstAttribute="bottom" secondItem="O49-sl-LYD" secondAttribute="bottom" id="l2s-VV-9vl"/>
+                    <constraint firstAttribute="trailing" secondItem="O49-sl-LYD" secondAttribute="trailing" constant="15" id="mP0-dR-27g"/>
+                </constraints>
+            </collectionViewCellContentView>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <size key="customSize" width="453" height="272"/>
+            <connections>
+                <outlet property="countLabel" destination="NYS-3b-bqm" id="LTK-ov-CKC"/>
+                <outlet property="textView" destination="5vn-fT-AoX" id="zIG-A6-rKX"/>
+            </connections>
+            <point key="canvasLocation" x="271.73913043478262" y="115.17857142857142"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGroupedBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

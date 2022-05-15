@@ -28,6 +28,7 @@ class SecondStrategyCollectionViewController<Strategy>: UICollectionViewControll
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setupNavigationBar()
         self.view.backgroundColor = .systemBackground
         self.collectionView.backgroundColor = .systemBackground
         self.registerCells()
@@ -41,8 +42,26 @@ class SecondStrategyCollectionViewController<Strategy>: UICollectionViewControll
         self.createInitialSnapshot()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.strategy.selectCell(self, collectionView: collectionView, at: indexPath)
+    }
+    
+    private func setupNavigationBar() {
+        self.setupNavigationItem()
+        self.strategy.bindingRightBarButtonEnable(navigationItem: self.navigationItem.rightBarButtonItem)
+        //self.navigationController?.title = self.strategy.navigationTitle
+        self.navigationItem.title = self.strategy.navigationTitle
+    }
+    
+    private func setupNavigationItem() {
+        guard let rightBarButton = self.strategy.rightNavigationBarItem else { return }
+        rightBarButton.target = self
+        rightBarButton.action = #selector(rightBarButtonAction)
+        self.navigationItem.rightBarButtonItem = rightBarButton
+    }
+    
+    @objc private func rightBarButtonAction() {
+        self.strategy.rightBarButtonAction(self)
     }
     
     private func registerCells() {

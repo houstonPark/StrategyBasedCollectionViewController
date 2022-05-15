@@ -59,6 +59,15 @@ struct SecondStrategy: SecondStrategyProtocol {
     
     var currentItems: CurrentValueSubject<[SecondStrategySection : [collectionViewItemType]], Never> = .init([SecondStrategySection: [Drink]]())
     
+    var rightNavigationBarItem: UIBarButtonItem? {
+        let barItem = UIBarButtonItem()
+        barItem.style = .plain
+        barItem.title = "Memo"
+        return barItem
+    }
+    
+    var navigationTitle: String? = nil
+    
     func numberOfItems(section: Int) -> Int {
         return 1
     }
@@ -108,8 +117,13 @@ struct SecondStrategy: SecondStrategyProtocol {
         self.currentItems.send([.main: drinks])
     }
     
-    func selectCell(_ navigationController: UINavigationController?, collectionView: UICollectionView, at selectedItemAt: IndexPath) {
-        
+    func selectCell(_ viewController: UIViewController, collectionView: UICollectionView, at selectedItemAt: IndexPath) {
+        let selectedSection = self.sections[selectedItemAt.section]
+        guard let items = self.currentItems.value[selectedSection] else { return }
+        let selectedItem = items[selectedItemAt.item]
+        let strategy = SecondStrategyDetail(drink: selectedItem)
+        let vc = SecondStrategyCollectionViewController<SecondStrategyDetail>(strategy: strategy)
+        viewController.navigationController?.pushViewController(vc, animated: true)
     }
     
     func configureCell(_ collectionView: UICollectionView, cellItendifiers: [String], indexPath: IndexPath, item: collectionViewItemType) -> UICollectionViewCell {
@@ -164,5 +178,26 @@ struct SecondStrategy: SecondStrategyProtocol {
             break
         }
         return reuseableView
+    }
+    
+    func rightBarButtonAction(_ viewController: UIViewController) {
+        let memoStrategy = SecondStrategyMemo()
+        let vc = SecondStrategyCollectionViewController<SecondStrategyMemo>(strategy: memoStrategy)
+        viewController.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func bindingRightBarButtonEnable(navigationItem: UIBarButtonItem?) {
+        guard let navigationItem = navigationItem else {
+            return
+        }
+        self.currentItems
+            .sink { value in
+                DispatchQueue.main.async {
+                    navigationItem.isEnabled = !value.isEmpty
+                    navigationItem.tintColor = value.isEmpty ? .systemGray : .systemBlue
+                    print("isEnabled", navigationItem.isEnabled)
+                }
+            }
+            .store(in: &GlobalCancellable.cancellable)
     }
 }
