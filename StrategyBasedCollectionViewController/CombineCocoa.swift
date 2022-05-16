@@ -34,12 +34,3 @@ extension UITextView {
             .eraseToAnyPublisher()
     }
 }
-
-//MARK: - UIBarButtonItem UIControlPublisher
-
-extension UIBarButtonItem {
-    
-    var actionPublisher: AnyPublisher<Void, Never> {
-        
-    }
-}

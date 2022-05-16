@@ -60,11 +60,11 @@ protocol SecondStrategyProtocol {
     
     func supplementaryViewProvider(_ collectionView: UICollectionView, elementKind: String, identifiable: SecondStrategySection, indexPath: NSIndexPath) -> UICollectionReusableView
     
-    var rightNavigationBarItems: [UIBarButtonItem]? { get }
+    var rightNavigationBarItem: UIBarButtonItem? { get }
     
-    func rightBarButtonActions(_ viewController: UIViewController) -> [()]
+    func rightBarButtonAction(_ viewController: UIViewController)
     
-    func bindingRightBarButtonEnable(navigationItems: [UIBarButtonItem]?)
+    func bindingRightBarButtonEnable(navigationItem: UIBarButtonItem?)
     
     func createUIBarButton(index:Int, style: UIBarButtonItem.Style, title: String?, image: UIImage?) -> UIBarButtonItem
 }

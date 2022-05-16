@@ -13,7 +13,7 @@ class GlobalCancellable {
 }
 
 struct SecondStrategy: SecondStrategyProtocol {
-
+    
     typealias collectionViewItemType = Drink
     
     typealias requestItemType = Drinks
@@ -172,106 +172,42 @@ struct SecondStrategy: SecondStrategyProtocol {
         }
         return reuseableView
     }
-    
-    var rightNavigationBarItems: [UIBarButtonItem]? {
-        return [
-            createUIBarButton(index: 0, style: .plain, title: nil, image: UIImage(systemName: "doc.text")),
-            createUIBarButton(index: 1, style: .plain, title: nil, image: UIImage(systemName: "magnifyingglass"))
-        ]
+
+    var rightNavigationBarItem: UIBarButtonItem? {
+        return createUIBarButton(index: 0, style: .plain, title: nil, image: UIImage(systemName: "doc.text"))
     }
-    
-    func rightBarButtonActions(_ viewController: UIViewController) -> [()] {
-        return [
-            memoAction(viewController),
-            searchAction(viewController)
-        ]
+
+    func rightBarButtonAction(_ viewController: UIViewController) {
+        let memoStrategy = SecondStrategyMemo()
+        let vc = SecondStrategyCollectionViewController<SecondStrategyMemo>(strategy: memoStrategy)
+        viewController.navigationController?.pushViewController(vc, animated: true)
     }
-    
-    func bindingRightBarButtonEnable(navigationItems: [UIBarButtonItem]?) {
+
+    func bindingRightBarButtonEnable(navigationItem: UIBarButtonItem?) {
+        guard let navigationItem = navigationItem else {
+            return
+        }
         self.currentItems
-            .sink { text in
+            .sink { value in
                 DispatchQueue.main.async {
-                    guard let navigationItems = navigationItems else {
-                        return
-                    }
-                    navigationItems.forEach { button in
-                        button.isEnabled = !text.isEmpty
-                        button.tintColor = text.isEmpty ? .systemGray : .systemBlue
-                    }
+                    navigationItem.isEnabled = !value.isEmpty
+                    navigationItem.tintColor = value.isEmpty ? .systemGray : .systemBlue
+                    print("isEnabled", navigationItem.isEnabled)
                 }
             }
             .store(in: &GlobalCancellable.cancellable)
     }
     
-    func createUIBarButton(index:Int, style: UIBarButtonItem.Style, title: String?, image: UIImage?) -> UIBarButtonItem {
-        let barButton = UIBarButtonItem()
-        barButton.tag = index
-        barButton.style = style
+    func createUIBarButton(index: Int, style: UIBarButtonItem.Style, title: String?, image: UIImage?) -> UIBarButtonItem {
+        let button = UIBarButtonItem()
+        button.tag = index
+        button.style = style
         if let title = title {
-            barButton.title = title
+            button.title = title
         }
         if let image = image {
-            barButton.image = image
+            button.image = image
         }
-        return barButton
+        return button
     }
-    
-    func memoAction(_ viewController: UIViewController) {
-        print("MEMO ACTION")
-        let strategy = SecondStrategyMemo()
-        let vc = SecondStrategyCollectionViewController<SecondStrategyMemo>(strategy: strategy)
-        viewController.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    func searchAction(_ viewController: UIViewController) {
-        print("SEARCH ACTION")
-    }
-    
-//    private class SecondStrategyAction {
-//
-//        let viewController: UIViewController
-//
-//        init(viewController: UIViewController) {
-//            self.viewController = viewController
-//        }
-//
-//        @objc func memoAction(_ sender: UIBarButtonItem) {
-//            let strategy = SecondStrategyMemo()
-//            let vc = SecondStrategyCollectionViewController<SecondStrategyMemo>(strategy: strategy)
-//            self.viewController.navigationController?.pushViewController(vc, animated: true)
-//        }
-//
-//        @objc func searchAction(_ sender: UIBarButtonItem) {
-//            print("SEARCH ACTION")
-//        }
-//    }
-    
-//
-//    var rightNavigationBarItem: UIBarButtonItem? {
-//        let barItem = UIBarButtonItem()
-//        barItem.style = .plain
-//        barItem.image = UIImage(systemName: "doc.text")
-//        return barItem
-//    }
-//
-//    func rightBarButtonAction(_ viewController: UIViewController) {
-//        let memoStrategy = SecondStrategyMemo()
-//        let vc = SecondStrategyCollectionViewController<SecondStrategyMemo>(strategy: memoStrategy)
-//        viewController.navigationController?.pushViewController(vc, animated: true)
-//    }
-//
-//    func bindingRightBarButtonEnable(navigationItem: UIBarButtonItem?) {
-//        guard let navigationItem = navigationItem else {
-//            return
-//        }
-//        self.currentItems
-//            .sink { value in
-//                DispatchQueue.main.async {
-//                    navigationItem.isEnabled = !value.isEmpty
-//                    navigationItem.tintColor = value.isEmpty ? .systemGray : .systemBlue
-//                    print("isEnabled", navigationItem.isEnabled)
-//                }
-//            }
-//            .store(in: &GlobalCancellable.cancellable)
-//    }
 }

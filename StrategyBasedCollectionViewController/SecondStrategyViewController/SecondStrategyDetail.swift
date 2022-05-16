@@ -113,13 +113,11 @@ struct SecondStrategyDetail: SecondStrategyProtocol {
         return UICollectionReusableView()
     }
     
-    var rightNavigationBarItems: [UIBarButtonItem]? = nil
+    var rightNavigationBarItem: UIBarButtonItem? = nil
     
-    func rightBarButtonActions(_ viewController: UIViewController) -> [()] {
-        return []
-    }
+    func rightBarButtonAction(_ viewController: UIViewController) { }
     
-    func bindingRightBarButtonEnable(navigationItems: [UIBarButtonItem]?) { }
+    func bindingRightBarButtonEnable(navigationItem: UIBarButtonItem?) { }
     
     func createUIBarButton(index:Int, style: UIBarButtonItem.Style, title: String?, image: UIImage?) -> UIBarButtonItem {
         return UIBarButtonItem()
