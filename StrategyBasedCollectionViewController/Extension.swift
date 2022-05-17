@@ -34,3 +34,16 @@ extension UITextView {
             .eraseToAnyPublisher()
     }
 }
+
+extension UIImageView {
+    func load(urlString: String) {
+        guard let url = URL(string: urlString) else { return }
+        DispatchQueue.global().async {
+            guard let data = try? Data(contentsOf: url) else { return }
+            guard let image = UIImage(data: data) else { return }
+            DispatchQueue.main.async {
+                self.image = image
+            }
+        }
+    }
+}

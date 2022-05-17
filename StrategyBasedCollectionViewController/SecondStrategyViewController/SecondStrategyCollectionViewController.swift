@@ -11,8 +11,8 @@ import Combine
 class SecondStrategyCollectionViewController<Strategy>: UICollectionViewController where Strategy: SecondStrategyProtocol {
     
     public var strategy: Strategy
-    private var cancellable = Set<AnyCancellable>()
-    private var dataSource : UICollectionViewDiffableDataSource<SecondStrategySection, Strategy.collectionViewItemType>?
+    public var cancellable = Set<AnyCancellable>()
+    public var dataSource : UICollectionViewDiffableDataSource<SecondStrategySection, Strategy.collectionViewItemType>?
     private var viewModel : SecondStrategyViewModel<Strategy.requestItemType>
     
     init(strategy: Strategy) {
@@ -109,9 +109,10 @@ class SecondStrategyCollectionViewController<Strategy>: UICollectionViewControll
     }
 
     private func dataSourceApply() {
-        let snapshot = self.strategy.createSnapshot()
-        self.dataSource?.apply(snapshot)
-        
+        DispatchQueue.main.async {
+            let snapshot = self.strategy.createSnapshot()
+            self.dataSource?.apply(snapshot)
+        }
     }
 
     private func request(item: apiRequestItem) {

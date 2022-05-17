@@ -24,5 +24,12 @@ class ViewController: UIViewController {
         let secondStrategyVC = SecondStrategyCollectionViewController<SecondStrategy>(strategy: secondStrategy)
         self.navigationController?.pushViewController(secondStrategyVC, animated: true)
     }
+    
+    @IBAction func CategoryAction(_ sender: Any) {
+        let strategy = Strategy()
+        let strategyVC = StrategyViewController(strategy: strategy)
+        self.navigationController?.pushViewController(strategyVC, animated: true)
+    }
+    
 }
 

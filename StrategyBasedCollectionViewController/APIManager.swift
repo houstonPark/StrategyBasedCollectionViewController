@@ -23,5 +23,6 @@ class APIManger {
     static var shared = APIManger()
     
     let baseURLString = "https://www.thecocktaildb.com/api/json/v1/1/search.php"
-    let filterURLString = "www.thecocktaildb.com/api/json/v1/1/filter.php"
+    let filterURLString = "https://www.thecocktaildb.com/api/json/v1/1/filter.php"
+    let listURLString = "https://www.thecocktaildb.com/api/json/v1/1/list.php"
 }

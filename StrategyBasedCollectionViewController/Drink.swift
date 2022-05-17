@@ -20,3 +20,11 @@ struct Drink: Hashable, Codable {
     var strDrinkThumb: String?
     var dateModified: String?
 }
+
+struct DrinkList: Hashable, Codable {
+    var drinks: [DrinkCategory]?
+}
+
+struct DrinkCategory: Hashable, Codable {
+    var strCategory: String?
+}

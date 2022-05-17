@@ -18,10 +18,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="kFF-vN-Bvi">
-                                <rect key="frame" x="161.5" y="348" width="91.5" height="200"/>
+                                <rect key="frame" x="141" y="298" width="132.5" height="300"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8u3-RL-tOv">
-                                        <rect key="frame" x="0.0" y="0.0" width="91.5" height="100"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="132.5" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="mzS-B4-ghb"/>
                                         </constraints>
@@ -32,7 +32,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O7u-oO-gNy">
-                                        <rect key="frame" x="0.0" y="100" width="91.5" height="100"/>
+                                        <rect key="frame" x="0.0" y="100" width="132.5" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="zyI-Ut-CpS"/>
                                         </constraints>
@@ -40,6 +40,17 @@
                                         <buttonConfiguration key="configuration" style="plain" title="Strategy 2"/>
                                         <connections>
                                             <action selector="Strategy2Action:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PLQ-tC-6Hi"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fXJ-KL-hIl">
+                                        <rect key="frame" x="0.0" y="200" width="132.5" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="9ss-Ag-9Of"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Category Search"/>
+                                        <connections>
+                                            <action selector="CategoryAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Lmd-tv-cWE"/>
                                         </connections>
                                     </button>
                                 </subviews>

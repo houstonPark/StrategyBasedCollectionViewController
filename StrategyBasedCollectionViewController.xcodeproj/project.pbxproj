@@ -25,17 +25,25 @@
 		837385412830AD350090C9C4 /* SecondStrategyMemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837385402830AD350090C9C4 /* SecondStrategyMemo.swift */; };
 		837385442830ADDA0090C9C4 /* SecondStrategyMemoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837385432830ADDA0090C9C4 /* SecondStrategyMemoCell.swift */; };
 		837385462830AE560090C9C4 /* SecondStrategyMemoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 837385452830AE560090C9C4 /* SecondStrategyMemoCell.xib */; };
+		838D951C28333F9F0016E94D /* Strategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838D951B28333F9F0016E94D /* Strategy.swift */; };
+		838D9520283341340016E94D /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838D951F283341340016E94D /* CategoryCell.swift */; };
+		838D9524283341510016E94D /* CategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 838D9523283341510016E94D /* CategoryCell.xib */; };
 		8392ABCA282AA6F500805418 /* SecondStrategyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8392ABC9282AA6F500805418 /* SecondStrategyProtocol.swift */; };
 		8392ABCC282AB57F00805418 /* SecondStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8392ABCB282AB57F00805418 /* SecondStrategy.swift */; };
 		8392ABCF282AB5E300805418 /* TextFieldHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8392ABCE282AB5E300805418 /* TextFieldHeaderView.xib */; };
 		8392ABD1282AB62100805418 /* TextFieldHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8392ABD0282AB62100805418 /* TextFieldHeaderView.swift */; };
+		83989FD42833C121007EF525 /* ThumbnailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83989FD32833C121007EF525 /* ThumbnailCell.swift */; };
+		83989FD62833C138007EF525 /* ThumbnailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83989FD52833C138007EF525 /* ThumbnailCell.xib */; };
 		8399700F2827D79A00686A72 /* FirstStrategyDetailCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8399700E2827D79A00686A72 /* FirstStrategyDetailCollectionViewCell.xib */; };
 		839970112827D87300686A72 /* FirstStrategyDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839970102827D87300686A72 /* FirstStrategyDetailCollectionViewCell.swift */; };
 		83A109AF281FD4280058CA5C /* FirstStrategyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A109AE281FD4280058CA5C /* FirstStrategyCollectionViewCell.swift */; };
+		83AB164B2833AE2B00B66F34 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AB164A2833AE2B00B66F34 /* ViewModel.swift */; };
 		83DFE4702828A8D2000F3E45 /* FirstStrategyDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DFE46F2828A8D2000F3E45 /* FirstStrategyDetail.swift */; };
-		83E86DE62831024700B4899F /* CombineCocoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E86DE52831024700B4899F /* CombineCocoa.swift */; };
+		83E86DE62831024700B4899F /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E86DE52831024700B4899F /* Extension.swift */; };
 		83F9E580282BA2C700E83921 /* SecondStrategyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F9E57F282BA2C700E83921 /* SecondStrategyViewModel.swift */; };
 		83F9E582282BBB3A00E83921 /* SecondStrategyCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F9E581282BBB3A00E83921 /* SecondStrategyCollectionViewController.swift */; };
+		83FCFE49283249D600DB6ABE /* StrategyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FCFE48283249D500DB6ABE /* StrategyProtocol.swift */; };
+		83FCFE4B2832507300DB6ABE /* StrategyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FCFE4A2832507300DB6ABE /* StrategyViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,17 +67,25 @@
 		837385402830AD350090C9C4 /* SecondStrategyMemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondStrategyMemo.swift; sourceTree = "<group>"; };
 		837385432830ADDA0090C9C4 /* SecondStrategyMemoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondStrategyMemoCell.swift; sourceTree = "<group>"; };
 		837385452830AE560090C9C4 /* SecondStrategyMemoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SecondStrategyMemoCell.xib; sourceTree = "<group>"; };
+		838D951B28333F9F0016E94D /* Strategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strategy.swift; sourceTree = "<group>"; };
+		838D951F283341340016E94D /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		838D9523283341510016E94D /* CategoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCell.xib; sourceTree = "<group>"; };
 		8392ABC9282AA6F500805418 /* SecondStrategyProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondStrategyProtocol.swift; sourceTree = "<group>"; };
 		8392ABCB282AB57F00805418 /* SecondStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondStrategy.swift; sourceTree = "<group>"; };
 		8392ABCE282AB5E300805418 /* TextFieldHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextFieldHeaderView.xib; sourceTree = "<group>"; };
 		8392ABD0282AB62100805418 /* TextFieldHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldHeaderView.swift; sourceTree = "<group>"; };
+		83989FD32833C121007EF525 /* ThumbnailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailCell.swift; sourceTree = "<group>"; };
+		83989FD52833C138007EF525 /* ThumbnailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ThumbnailCell.xib; sourceTree = "<group>"; };
 		8399700E2827D79A00686A72 /* FirstStrategyDetailCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FirstStrategyDetailCollectionViewCell.xib; sourceTree = "<group>"; };
 		839970102827D87300686A72 /* FirstStrategyDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstStrategyDetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		83A109AE281FD4280058CA5C /* FirstStrategyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstStrategyCollectionViewCell.swift; sourceTree = "<group>"; };
+		83AB164A2833AE2B00B66F34 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		83DFE46F2828A8D2000F3E45 /* FirstStrategyDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstStrategyDetail.swift; sourceTree = "<group>"; };
-		83E86DE52831024700B4899F /* CombineCocoa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineCocoa.swift; sourceTree = "<group>"; };
+		83E86DE52831024700B4899F /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		83F9E57F282BA2C700E83921 /* SecondStrategyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondStrategyViewModel.swift; sourceTree = "<group>"; };
 		83F9E581282BBB3A00E83921 /* SecondStrategyCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondStrategyCollectionViewController.swift; sourceTree = "<group>"; };
+		83FCFE48283249D500DB6ABE /* StrategyProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrategyProtocol.swift; sourceTree = "<group>"; };
+		83FCFE4A2832507300DB6ABE /* StrategyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrategyViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,7 +122,8 @@
 				83572F23281FC03400B329DE /* SceneDelegate.swift */,
 				83572F25281FC03400B329DE /* ViewController.swift */,
 				833BBBFE281FCBAB00362C84 /* Drink.swift */,
-				83E86DE52831024700B4899F /* CombineCocoa.swift */,
+				83E86DE52831024700B4899F /* Extension.swift */,
+				83FCFE47283249BE00DB6ABE /* StrategyViewController */,
 				8399700D2827D73400686A72 /* FirstStrategyViewController */,
 				8392ABC8282AA69C00805418 /* SecondStrategyViewController */,
 				83572F27281FC03400B329DE /* Main.storyboard */,
@@ -125,6 +142,17 @@
 				837385452830AE560090C9C4 /* SecondStrategyMemoCell.xib */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		838D951E283340FC0016E94D /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				838D951F283341340016E94D /* CategoryCell.swift */,
+				838D9523283341510016E94D /* CategoryCell.xib */,
+				83989FD32833C121007EF525 /* ThumbnailCell.swift */,
+				83989FD52833C138007EF525 /* ThumbnailCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		8392ABC8282AA69C00805418 /* SecondStrategyViewController */ = {
@@ -166,6 +194,18 @@
 				8399700E2827D79A00686A72 /* FirstStrategyDetailCollectionViewCell.xib */,
 			);
 			path = FirstStrategyViewController;
+			sourceTree = "<group>";
+		};
+		83FCFE47283249BE00DB6ABE /* StrategyViewController */ = {
+			isa = PBXGroup;
+			children = (
+				83FCFE48283249D500DB6ABE /* StrategyProtocol.swift */,
+				838D951B28333F9F0016E94D /* Strategy.swift */,
+				83FCFE4A2832507300DB6ABE /* StrategyViewController.swift */,
+				83AB164A2833AE2B00B66F34 /* ViewModel.swift */,
+				838D951E283340FC0016E94D /* Cell */,
+			);
+			path = StrategyViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -230,9 +270,11 @@
 				83572F2E281FC03500B329DE /* LaunchScreen.storyboard in Resources */,
 				83572F2B281FC03500B329DE /* Assets.xcassets in Resources */,
 				8399700F2827D79A00686A72 /* FirstStrategyDetailCollectionViewCell.xib in Resources */,
+				83989FD62833C138007EF525 /* ThumbnailCell.xib in Resources */,
 				83572F29281FC03400B329DE /* Main.storyboard in Resources */,
 				8316D77A28226915005C799F /* FirstStrategyCollectionViewCell.xib in Resources */,
 				8392ABCF282AB5E300805418 /* TextFieldHeaderView.xib in Resources */,
+				838D9524283341510016E94D /* CategoryCell.xib in Resources */,
 				833BBBF9281FC45900362C84 /* FirstStrategyViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -246,22 +288,28 @@
 			files = (
 				8392ABCA282AA6F500805418 /* SecondStrategyProtocol.swift in Sources */,
 				833BBBFD281FC78E00362C84 /* FirstStrategy.swift in Sources */,
-				83E86DE62831024700B4899F /* CombineCocoa.swift in Sources */,
+				83E86DE62831024700B4899F /* Extension.swift in Sources */,
 				833BBBFB281FC47F00362C84 /* APIManager.swift in Sources */,
+				838D9520283341340016E94D /* CategoryCell.swift in Sources */,
 				83F9E582282BBB3A00E83921 /* SecondStrategyCollectionViewController.swift in Sources */,
+				83AB164B2833AE2B00B66F34 /* ViewModel.swift in Sources */,
 				83F9E580282BA2C700E83921 /* SecondStrategyViewModel.swift in Sources */,
 				83572F26281FC03400B329DE /* ViewController.swift in Sources */,
+				83989FD42833C121007EF525 /* ThumbnailCell.swift in Sources */,
 				839970112827D87300686A72 /* FirstStrategyDetailCollectionViewCell.swift in Sources */,
 				83572F22281FC03400B329DE /* AppDelegate.swift in Sources */,
 				833BBBFF281FCBAB00362C84 /* Drink.swift in Sources */,
 				83DFE4702828A8D2000F3E45 /* FirstStrategyDetail.swift in Sources */,
 				83572F24281FC03400B329DE /* SceneDelegate.swift in Sources */,
 				8392ABD1282AB62100805418 /* TextFieldHeaderView.swift in Sources */,
+				83FCFE4B2832507300DB6ABE /* StrategyViewController.swift in Sources */,
 				837385412830AD350090C9C4 /* SecondStrategyMemo.swift in Sources */,
 				837385442830ADDA0090C9C4 /* SecondStrategyMemoCell.swift in Sources */,
 				833BBBF7281FC43800362C84 /* FirstStrategyViewController.swift in Sources */,
+				83FCFE49283249D600DB6ABE /* StrategyProtocol.swift in Sources */,
 				8392ABCC282AB57F00805418 /* SecondStrategy.swift in Sources */,
 				833BBBF5281FC41400362C84 /* FirstStrategyProtocol.swift in Sources */,
+				838D951C28333F9F0016E94D /* Strategy.swift in Sources */,
 				83100FF52820EBBD0091500F /* FirstStrategyViewModel.swift in Sources */,
 				83A109AF281FD4280058CA5C /* FirstStrategyCollectionViewCell.swift in Sources */,
 				8359B0C52830C32200C9D47F /* SecondStrategyDetail.swift in Sources */,
