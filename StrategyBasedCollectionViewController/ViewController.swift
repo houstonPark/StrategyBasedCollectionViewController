@@ -15,20 +15,22 @@ class ViewController: UIViewController {
     }
     
     @IBAction func Strategy1Action(_ sender: Any) {
-        let firstStrategyVC = FirstStrategyViewController.create(strategy: FirstStrategy())
-        self.navigationController?.pushViewController(firstStrategyVC, animated: true)
+        let editNickNameStrategy = EditNickNameConcreteStrategy()
+        let vc = EditProfileStrategyViewController.create(strategy: editNickNameStrategy)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func Strategy2Action(_ sender: Any) {
-        let secondStrategy = SecondStrategy()
-        let secondStrategyVC = SecondStrategyCollectionViewController<SecondStrategy>(strategy: secondStrategy)
-        self.navigationController?.pushViewController(secondStrategyVC, animated: true)
+        let editSchoolStrategy = EditSchoolConcreteStrategy()
+        let vc = EditProfileStrategyViewController.create(strategy: editSchoolStrategy)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func CategoryAction(_ sender: Any) {
-        let strategy = Strategy()
-        let strategyVC = StrategyViewController(strategy: strategy)
-        self.navigationController?.pushViewController(strategyVC, animated: true)
+        let editGradeStrategy = EditGradeConcreteStrategy()
+        let vc = EditProfileStrategyViewController.create(strategy: editGradeStrategy)
+        self.navigationController?.pushViewController(vc, animated: true)
+        
     }
     
 }
