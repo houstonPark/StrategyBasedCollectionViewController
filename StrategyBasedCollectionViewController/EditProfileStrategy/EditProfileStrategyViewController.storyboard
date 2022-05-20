@@ -22,20 +22,68 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="12" minimumInteritemSpacing="12" id="lLd-h1-vkV">
-                                    <size key="itemSize" width="397" height="44"/>
+                                    <size key="itemSize" width="382" height="44"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="16" minY="24" maxX="16" maxY="24"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="EditProfileSperatorCell" id="C3q-cf-4hy">
-                                        <rect key="frame" x="8.5" y="24" width="397" height="44"/>
+                                        <rect key="frame" x="16" y="0.0" width="382" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="gpy-Un-kqO">
-                                            <rect key="frame" x="0.0" y="0.0" width="397" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="382" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </collectionViewCellContentView>
                                         <color key="backgroundColor" red="0.91764705882352937" green="0.91764705882352937" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="EditProfileActivityIndicatorCell" id="4vY-wA-biJ">
+                                        <rect key="frame" x="180" y="56" width="54" height="48"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="aLe-YI-NUp">
+                                            <rect key="frame" x="0.0" y="0.0" width="54" height="48"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="zWB-T0-6wZ">
+                                                    <rect key="frame" x="17" y="14" width="20" height="20"/>
+                                                </activityIndicatorView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="zWB-T0-6wZ" firstAttribute="centerX" secondItem="aLe-YI-NUp" secondAttribute="centerX" id="FjI-hg-5T4"/>
+                                                <constraint firstItem="zWB-T0-6wZ" firstAttribute="centerY" secondItem="aLe-YI-NUp" secondAttribute="centerY" id="jHa-t9-aTr"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="54" height="48"/>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="EditProfileEmptyCell" id="wOU-hP-zeg">
+                                        <rect key="frame" x="16" y="116" width="382" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="ejK-tV-17z">
+                                            <rect key="frame" x="0.0" y="0.0" width="382" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="EditProfileEmptyListCell" id="zU5-aa-f6W">
+                                        <rect key="frame" x="16" y="172" width="382" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="mEJ-6H-K9F">
+                                            <rect key="frame" x="0.0" y="0.0" width="382" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="검색결과가 없습니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S4w-9b-DfI">
+                                                    <rect key="frame" x="0.0" y="0.0" width="382" height="44"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="S4w-9b-DfI" firstAttribute="top" secondItem="mEJ-6H-K9F" secondAttribute="top" id="Gg1-ga-dz3"/>
+                                                <constraint firstAttribute="bottom" secondItem="S4w-9b-DfI" secondAttribute="bottom" id="Isb-1m-EDn"/>
+                                                <constraint firstItem="S4w-9b-DfI" firstAttribute="leading" secondItem="mEJ-6H-K9F" secondAttribute="leading" id="XcG-ZX-YAc"/>
+                                                <constraint firstAttribute="trailing" secondItem="S4w-9b-DfI" secondAttribute="trailing" id="zZy-hq-xso"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>

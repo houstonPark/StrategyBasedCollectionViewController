@@ -9,16 +9,19 @@ import UIKit
 import Combine
 
 class EditGradeConcreteStrategy: EditProfileStrategy {
+    
+    private var cancellable = Set<AnyCancellable>()
+    
     var sections: [SectionCase] = [SectionCase.buttonCollection, SectionCase.seperator, SectionCase.buttonCollection]
     
-    var items: [Int : [DiffableData]] = [
+    var items: CurrentValueSubject<[Int: [DiffableData]],Never> = .init([
         0: [
             DiffableData(text: "초등학교", textStatus: .plain),
             DiffableData(text: "중학교", textStatus: .plain),
             DiffableData(text: "고등학교", textStatus: .plain),
         ],
         1: [
-            DiffableData(textStatus: .plain)
+            DiffableData()
         ],
         2 : [
             DiffableData(text: "1학년", textStatus: .plain),
@@ -29,7 +32,7 @@ class EditGradeConcreteStrategy: EditProfileStrategy {
             DiffableData(text: "6학년", textStatus: .plain),
         ]
         
-    ]
+    ])
     
     func cellSize(collectionViewSize: CGSize, sectionIndex: Int) -> CGSize {
         switch sectionIndex {
@@ -48,5 +51,12 @@ class EditGradeConcreteStrategy: EditProfileStrategy {
         nil
     }
     
+    func actionHandler(publishedText: String, callFrom: CallFrom) {
+        
+    }
+    
+    func networkHandler(publishedText: String, callFrom: CallFrom) {
+        
+    }
     
 }
