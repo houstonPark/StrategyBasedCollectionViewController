@@ -51,6 +51,8 @@ class EditProfileStrategyViewController: UIViewController {
                 self.collectionView.register(UINib(nibName: "EditProfileTextViewCell", bundle: .main), forCellWithReuseIdentifier: "EditProfileTextViewCell")
             case .buttonCollection:
                 self.collectionView.register(UINib(nibName: "EditProfileButtonCollectionCell", bundle: .main), forCellWithReuseIdentifier: "EditProfileButtonCollectionCell")
+            case .seperator:
+                break
             }
         }
     }
@@ -79,6 +81,9 @@ class EditProfileStrategyViewController: UIViewController {
                 let isSelected: Bool = self.collectionView.indexPathsForSelectedItems?.contains(indexPath) ?? false
                 buttonCell.configure(text: itemIdentifier.text, isSelected: isSelected)
                 cell = buttonCell
+            case .seperator:
+                let seperatorCell = collectionView.dequeueReusableCell(withReuseIdentifier: "EditProfileSperatorCell", for: indexPath)
+                cell = seperatorCell
             }
             return cell
         })

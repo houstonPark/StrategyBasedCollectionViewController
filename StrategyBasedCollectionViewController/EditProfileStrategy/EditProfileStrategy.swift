@@ -22,6 +22,7 @@ enum SectionCase: Hashable {
     case textField(placeholder: String)
     case textView(placeholder: String)
     case buttonCollection
+    case seperator
 }
 
 struct DiffableData: Hashable {
