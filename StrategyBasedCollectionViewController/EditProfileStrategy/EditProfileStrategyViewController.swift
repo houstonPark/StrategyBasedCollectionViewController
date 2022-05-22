@@ -33,6 +33,9 @@ class EditProfileStrategyViewController: UIViewController {
         self.registerCells()
         self.setupDateSource()
         self.subscribeAndUpdateSnapshot()
+        self.strategy.networkHandler(publishedText: nil, callFrom: .viewDidLoad)
+        self.strategy.actionHandler(publishedText: nil, callFrom: .viewDidLoad)
+        
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -69,7 +72,8 @@ class EditProfileStrategyViewController: UIViewController {
                 textFieldCell.configure(placeholder: placeholder, data: itemIdentifier)
                 textFieldCell.textField.textPublisher
                     .sink { text in
-                        
+                        self.strategy.networkHandler(publishedText: text, callFrom: .dequeueReuseCell)
+                        self.strategy.actionHandler(publishedText: text, callFrom: .dequeueReuseCell)
                     }
                     .store(in: &self.cancellabel)
                 cell = textFieldCell
@@ -79,7 +83,8 @@ class EditProfileStrategyViewController: UIViewController {
                 textViewCell.textView.text = itemIdentifier.text
                 textViewCell.textView.textPublisher
                     .sink { text in
-                        
+                        self.strategy.networkHandler(publishedText: text, callFrom: .dequeueReuseCell)
+                        self.strategy.actionHandler(publishedText: text, callFrom: .dequeueReuseCell)
                     }
                     .store(in: &self.cancellabel)
                 cell = textViewCell
@@ -108,22 +113,25 @@ class EditProfileStrategyViewController: UIViewController {
     }
     
     private func subscribeAndUpdateSnapshot() {
-        
-        var snapshot = NSDiffableDataSourceSnapshot<Int, DiffableData>()
-        snapshot.appendSections(Array(0..<self.strategy.sections.count))
-        if strategy.items.value.isEmpty { return }
-        self.strategy.sections.enumerated().forEach { (index, _) in
-            guard let items = self.strategy.items.value[index] else { return }
-            snapshot.appendItems(items, toSection: index)
-        }
-        self.dataSource?.apply(snapshot)
+        self.strategy.items
+            .sink { items in
+                var snapshot = NSDiffableDataSourceSnapshot<Int, DiffableData>()
+                snapshot.appendSections(Array(0..<self.strategy.sections.count))
+                if items.isEmpty { return }
+                self.strategy.sections.enumerated().forEach { (index, _) in
+                    guard let items = items[index] else { return }
+                    snapshot.appendItems(items, toSection: index)
+                }
+                self.dataSource?.apply(snapshot)
+            }
+            .store(in: &self.cancellabel)
     }
 }
 
 extension EditProfileStrategyViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        self.strategy.cellSize(collectionViewSize: self.collectionView.frame.size, sectionIndex: indexPath.section)
+        self.strategy.cellSize(collectionViewSize: self.collectionView.frame.size, sizeForItemAt: indexPath)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -143,7 +151,11 @@ extension EditProfileStrategyViewController: UICollectionViewDelegate {
         let sectionCase = self.strategy.sections[indexPath.section]
         switch sectionCase {
         case .buttonCollection:
-            break
+            guard let item = self.strategy.items.value[indexPath.section]?[indexPath.item] else { return }
+            let text = item.text
+            self.strategy.networkHandler(publishedText: text, callFrom: .selectCell)
+            self.strategy.actionHandler(publishedText: text, callFrom: .selectCell)
+            
         default:
             return
         }

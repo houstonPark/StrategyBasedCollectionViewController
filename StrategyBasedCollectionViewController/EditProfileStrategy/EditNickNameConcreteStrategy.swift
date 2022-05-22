@@ -18,7 +18,7 @@ class EditNickNameConcreteStrategy: EditProfileStrategy {
         0: [DiffableData(message: "닉네임은 한글, 영문, 숫자, 마침표(.), 대시(-), 밑줄(_)의 조합으로 최대 10자까지 가능합니다.", textStatus: .plain)]
     ])
     
-    func cellSize(collectionViewSize: CGSize, sectionIndex: Int) -> CGSize {
+    func cellSize(collectionViewSize: CGSize, sizeForItemAt indexPath: IndexPath) -> CGSize {
         CGSize(width: collectionViewSize.width - 32, height: 90)
     }
     
@@ -26,11 +26,11 @@ class EditNickNameConcreteStrategy: EditProfileStrategy {
         return nil
     }
     
-    func actionHandler(publishedText: String, callFrom: CallFrom) {
+    func actionHandler(publishedText: String?, callFrom: CallFrom) {
         
     }
     
-    func networkHandler(publishedText: String, callFrom: CallFrom) {
+    func networkHandler(publishedText: String?, callFrom: CallFrom) {
         
     }
 }

@@ -21,7 +21,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hea-w1-eKU">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="12" minimumInteritemSpacing="12" id="lLd-h1-vkV">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="lLd-h1-vkV" customClass="LeftAlignedFlowLayout" customModule="StrategyBasedCollectionViewController" customModuleProvider="target">
                                     <size key="itemSize" width="382" height="44"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -38,7 +38,7 @@
                                         <color key="backgroundColor" red="0.91764705882352937" green="0.91764705882352937" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="EditProfileActivityIndicatorCell" id="4vY-wA-biJ">
-                                        <rect key="frame" x="180" y="56" width="54" height="48"/>
+                                        <rect key="frame" x="180" y="44" width="54" height="48"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="aLe-YI-NUp">
                                             <rect key="frame" x="0.0" y="0.0" width="54" height="48"/>
@@ -56,7 +56,7 @@
                                         <size key="customSize" width="54" height="48"/>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="EditProfileEmptyCell" id="wOU-hP-zeg">
-                                        <rect key="frame" x="16" y="116" width="382" height="44"/>
+                                        <rect key="frame" x="16" y="92" width="382" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="ejK-tV-17z">
                                             <rect key="frame" x="0.0" y="0.0" width="382" height="44"/>
@@ -64,7 +64,7 @@
                                         </collectionViewCellContentView>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="EditProfileEmptyListCell" id="zU5-aa-f6W">
-                                        <rect key="frame" x="16" y="172" width="382" height="44"/>
+                                        <rect key="frame" x="16" y="136" width="382" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="mEJ-6H-K9F">
                                             <rect key="frame" x="0.0" y="0.0" width="382" height="44"/>

@@ -16,8 +16,8 @@ class EditSchoolConcreteStrategy: EditProfileStrategy {
         0: [DiffableData()]
     ])
     
-    func cellSize(collectionViewSize: CGSize, sectionIndex: Int) -> CGSize {
-        if sectionIndex == 0 {
+    func cellSize(collectionViewSize: CGSize, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if indexPath.section == 0 {
             return CGSize(width: collectionViewSize.width - 32, height: 68)
         }
         else {
@@ -29,11 +29,11 @@ class EditSchoolConcreteStrategy: EditProfileStrategy {
         nil
     }
     
-    func actionHandler(publishedText: String, callFrom: CallFrom) {
+    func actionHandler(publishedText: String?, callFrom: CallFrom) {
 
     }
     
-    func networkHandler(publishedText: String, callFrom: CallFrom) {
+    func networkHandler(publishedText: String?, callFrom: CallFrom) {
         
     }
     
