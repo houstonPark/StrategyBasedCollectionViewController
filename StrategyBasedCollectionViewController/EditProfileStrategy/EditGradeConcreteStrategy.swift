@@ -50,10 +50,6 @@ class EditGradeConcreteStrategy: EditProfileStrategy {
         }
     }
     
-    func editableCheckIfNeeded() -> Bool? {
-        nil
-    }
-    
     func actionHandler(publishedText: String?, callFrom: CallFrom) {
         guard let publishedText = publishedText else {
             return

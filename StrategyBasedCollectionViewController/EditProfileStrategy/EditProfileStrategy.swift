@@ -8,34 +8,72 @@
 import UIKit
 import Combine
 
+
+//  Homework
+
+//  1. SectionCase와 Int를 1개로 표현해보자.
+//  2. AsyncList 없애기
+//  3. CellFrom을 없애기
+//  4. items 노출 없애보기.
+
 protocol EditProfileStrategy {
     
     var sections: [SectionCase] { get set }
     
     var items: CurrentValueSubject<[Int: [DiffableData]],Never> { get set }
 
-    var cellIdentifiers: [String] { get }
-
     func cellSize(collectionViewSize: CGSize, sizeForItemAt indexPath: IndexPath) -> CGSize
-    
-    func editableCheckIfNeeded() -> Bool?
-    
-    func actionHandler(publishedText: String?, callFrom: CallFrom)
+
+    func fetchDataSource(_ value: String?)
+
+    func didValueChanged(oldValue: Any?, newValue: Any?)
+
+    func didSelect(collectionView: UICollectionView, at indexPath: IndexPath)
+
+    func reloadData()
 }
+
+//case viewDidLoad
+//case dequeueReuseCell
+//case selectCell
 
 enum SectionCase: Hashable {
+
     case textField(placeholder: String)
+
     case textView(placeholder: String)
-    case buttonCollection
+
+    case button
+
     case seperator
-    case asyncList(status: AsyncStatus)
+
+    case custom(status: AsyncStatus)
+
+    var cellIdentifier: String {
+        switch self {
+        case .textField(_):
+            return "EditProfileTextFieldCell"
+        case .textView(_):
+            return "EditProfileTextViewCell"
+        case .button:
+            return "EditProfileButtonCollectionCell"
+        case .seperator:
+            return "EditProfileSperatorCell"
+        case .custom(let rawValue):
+            return rawValue.cellIdentifier
+        }
+    }
 }
 
-enum AsyncStatus {
+enum AsyncStatus: String {
     case none
     case loading
     case showList
     case emptyList
+
+    var cellIdentifier: String {
+        ""
+    }
 }
 
 struct DiffableData: Hashable {

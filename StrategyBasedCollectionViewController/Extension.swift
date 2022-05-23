@@ -75,17 +75,20 @@ extension UIImageView {
 }
 
 class LeftAlignedFlowLayout: UICollectionViewFlowLayout {
-    let itemSpacing: CGFloat = 12
+    open var itemSpacing: CGFloat = 12
 
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         self.minimumLineSpacing = 16.0
         self.minimumInteritemSpacing = 12
         self.sectionInset = UIEdgeInsets(top: 24.0, left: 16.0, bottom: 24.0, right: 16.0)
-        let attributes = super.layoutAttributesForElements(in: rect)
+        guard let superArray = super.layoutAttributesForElements(in: rect) else { return nil }
+
+        guard let attributes = NSArray(array: superArray, copyItems: true) as? [UICollectionViewLayoutAttributes] else { return nil }
+
 
         var leftMargin = sectionInset.left
-        var maxY: CGFloat = -1.0
-        attributes?.forEach { layoutAttribute in
+        var maxY: CGFloat = .leastNormalMagnitude
+        attributes.forEach { layoutAttribute in
             if layoutAttribute.frame.origin.y >= maxY {
                 leftMargin = sectionInset.left
             }

@@ -18,10 +18,10 @@ class EditSchoolConcreteStrategy: EditProfileStrategy {
         0: [DiffableData()]
     ])
 
-    var cellIdentifiers: [String] = [
-        "EditProfileTextFieldCell",
-        "EditProfileListCell"
-    ]
+//    var cellIdentifiers: [String] = [
+//        "EditProfileTextFieldCell",
+//        "EditProfileListCell"
+//    ]
     
     func cellSize(collectionViewSize: CGSize, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.section == 0 {
@@ -30,10 +30,6 @@ class EditSchoolConcreteStrategy: EditProfileStrategy {
         else {
             return CGSize(width: collectionViewSize.width - 32, height: 20)
         }
-    }
-    
-    func editableCheckIfNeeded() -> Bool? {
-        nil
     }
     
     func actionHandler(publishedText: String?, callFrom: CallFrom) {

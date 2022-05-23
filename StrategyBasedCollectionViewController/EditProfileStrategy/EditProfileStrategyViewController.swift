@@ -21,7 +21,6 @@ class EditProfileStrategyViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     private var strategy: EditProfileStrategy!
-    private var isEditable: Bool?
     private var dataSource: UICollectionViewDiffableDataSource<Int, DiffableData>?
     private var selectedItemInSection: CurrentValueSubject<[Int: IndexPath], Never> = .init([:])
     private var editedText: [IndexPath: String] = [:]
@@ -32,92 +31,23 @@ class EditProfileStrategyViewController: UIViewController {
     // MARK: - Override func
     
     override func viewDidLoad() {
+
         super.viewDidLoad()
-        self.isEditable = self.strategy.editableCheckIfNeeded()
-        self.registerCells()
-        self.setupDateSource()
-        self.subscribeAndUpdateSnapshot()
-        self.subscribeSelectedItems()
-        self.strategy.actionHandler(publishedText: nil, callFrom: .viewDidLoad)
-        self.collectionView.allowsMultipleSelection = self.strategy.sections.contains(where: { sectionCase in
-            sectionCase == .buttonCollection
-        })
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        self.cancellabel.removeAll()
-    }
-    
-    // MARK: - Strategy Apply
-    private func registerCells() {
-        self.strategy.cellIdentifiers.forEach { identifier in
-            self.collectionView.register(UINib(nibName: identifier, bundle: .main), forCellWithReuseIdentifier: identifier)
+
+        self.strategy.sections.forEach { sectionCase in
+            self.collectionView.register(UINib(nibName: sectionCase.cellIdentifier, bundle: .main),
+                                         forCellWithReuseIdentifier: sectionCase.cellIdentifier)
         }
-    }
-    
-    private func setupDateSource() {
-        self.dataSource = UICollectionViewDiffableDataSource(collectionView: self.collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
-            var cell = UICollectionViewCell()
-            let sectionCase = self.strategy.sections[indexPath.section]
-            switch sectionCase {
-            case let .textField(placeholder):
-                let textFieldCell = collectionView.dequeueReusableCell(withReuseIdentifier: "EditProfileTextFieldCell", for: indexPath) as! EditProfileTextFieldCell
-                textFieldCell.configure(text: self.editedText[indexPath] ?? "", placeholder: placeholder, data: itemIdentifier)
-                textFieldCell.textField.textPublisher
-                    .sink { text in
-                        self.editedText[indexPath] = text
-                        self.strategy.actionHandler(publishedText: text, callFrom: .dequeueReuseCell)
-                    }
-                    .store(in: &self.cancellabel)
-                cell = textFieldCell
 
-            case let .textView(placeholder):
-                let textViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "EditProfileTextViewCell", for: indexPath) as! EditProfileTextViewCell
-                textViewCell.placeholder = placeholder
-                textViewCell.textView.text = self.editedText[indexPath]
-                textViewCell.textView.textPublisher
-                    .sink { text in
-                        self.editedText[indexPath] = text
-                        self.strategy.actionHandler(publishedText: text, callFrom: .dequeueReuseCell)
-                    }
-                    .store(in: &self.cancellabel)
-                cell = textViewCell
+        self.setupDateSource()
 
-            case .buttonCollection:
-                let buttonCell = collectionView.dequeueReusableCell(withReuseIdentifier: "EditProfileButtonCollectionCell", for: indexPath) as! EditProfileButtonCollectionCell
-                let isSelected: Bool = self.selectedItemInSection.value[indexPath.section] == indexPath
-                buttonCell.configure(text: itemIdentifier.text, isSelected: isSelected)
-                cell = buttonCell
-
-            case .seperator:
-                let seperatorCell = collectionView.dequeueReusableCell(withReuseIdentifier: "EditProfileSperatorCell", for: indexPath)
-                cell = seperatorCell
-
-            case let .asyncList(status):
-                switch status {
-                case .loading:
-                    cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EditProfileActivityIndicatorCell", for: indexPath)
-                case .none:
-                    cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EditProfileEmptyCell", for: indexPath)
-                case .emptyList:
-                    cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EditProfileEmptyListCell", for: indexPath)
-                case .showList:
-                    let listCell = collectionView.dequeueReusableCell(withReuseIdentifier: "EditProfileListCell", for: indexPath) as! EditProfileListCell
-                    listCell.configure(label: itemIdentifier.text ?? "Empty")
-                    cell = listCell
-                }
-            }
-            return cell
-        })
-    }
-    
-    private func subscribeAndUpdateSnapshot() {
         self.strategy.items
             .sink { items in
                 var snapshot = NSDiffableDataSourceSnapshot<Int, DiffableData>()
                 snapshot.appendSections(Array(0..<self.strategy.sections.count))
-                if items.isEmpty { return }
+
+                guard items.isEmpty == false else { return }
+
                 self.strategy.sections.enumerated().forEach { (index, _) in
                     guard let items = items[index] else { return }
                     snapshot.appendItems(items, toSection: index)
@@ -127,9 +57,8 @@ class EditProfileStrategyViewController: UIViewController {
                 }
             }
             .store(in: &self.cancellabel)
-    }
 
-    private func subscribeSelectedItems() {
+
         self.selectedItemInSection
             .sink { paths in
                 self.collectionView.indexPathsForVisibleItems.forEach { indexPath in
@@ -141,7 +70,71 @@ class EditProfileStrategyViewController: UIViewController {
                 }
             }
             .store(in: &self.cancellabel)
+
+
+        self.strategy.actionHandler(publishedText: nil, callFrom: .viewDidLoad)
+        self.collectionView.allowsMultipleSelection = self.strategy.sections.contains(where: { sectionCase in
+            sectionCase == .buttonCollection
+        })
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.cancellabel.removeAll()
+    }
+
+    
+    private func setupDateSource() {
+        self.dataSource = UICollectionViewDiffableDataSource(collectionView: self.collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
+            var cell = UICollectionViewCell()
+            let sectionCase = self.strategy.sections[indexPath.section]
+            switch sectionCase {
+            case let .textField(placeholder):
+                let textFieldCell = collectionView.dequeueReusableCell(withReuseIdentifier: sectionCase.cellIdentifier, for: indexPath) as! EditProfileTextFieldCell
+                textFieldCell.configure(text: self.editedText[indexPath] ?? "", placeholder: placeholder, data: itemIdentifier)
+                textFieldCell.textField.textPublisher
+                    .sink { text in
+                        self.editedText[indexPath] = text
+                        self.strategy.actionHandler(publishedText: text, callFrom: .dequeueReuseCell)
+                    }
+                    .store(in: &self.cancellabel)
+                cell = textFieldCell
+
+            case let .textView(placeholder):
+                let textViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: sectionCase.cellIdentifier, for: indexPath) as! EditProfileTextViewCell
+                textViewCell.placeholder = placeholder
+                textViewCell.textView.text = self.editedText[indexPath]
+                textViewCell.textView.textPublisher
+                    .sink { text in
+                        self.editedText[indexPath] = text
+                        self.strategy.actionHandler(publishedText: text, callFrom: .dequeueReuseCell)
+                    }
+                    .store(in: &self.cancellabel)
+                cell = textViewCell
+
+            case .buttonCollection:
+                let buttonCell = collectionView.dequeueReusableCell(withReuseIdentifier: sectionCase.cellIdentifier, for: indexPath) as! EditProfileButtonCollectionCell
+                let isSelected: Bool = self.selectedItemInSection.value[indexPath.section] == indexPath
+                buttonCell.configure(text: itemIdentifier.text, isSelected: isSelected)
+                cell = buttonCell
+
+            case .seperator:
+                return collectionView.dequeueReusableCell(withReuseIdentifier: sectionCase.cellIdentifier, for: indexPath)
+
+            case let .asyncList(status):
+                switch status {
+                case .loading, .none, .emptyList:
+                    return collectionView.dequeueReusableCell(withReuseIdentifier: sectionCase.cellIdentifier, for: indexPath)
+                case .showList:
+                    let listCell = collectionView.dequeueReusableCell(withReuseIdentifier: sectionCase.cellIdentifier, for: indexPath) as! EditProfileListCell
+                    listCell.configure(label: itemIdentifier.text ?? "Empty")
+                    cell = listCell
+                }
+            }
+            return cell
+        })
+    }
+    
 }
 
 extension EditProfileStrategyViewController: UICollectionViewDelegateFlowLayout {
