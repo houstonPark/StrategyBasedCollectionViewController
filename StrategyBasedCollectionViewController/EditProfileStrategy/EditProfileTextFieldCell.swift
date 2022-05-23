@@ -23,9 +23,9 @@ class EditProfileTextFieldCell: UICollectionViewCell {
         self.textField.errorMessage = nil
     }
     
-    public func configure(placeholder: String, data: DiffableData) {
+    public func configure(text: String, placeholder: String, data: DiffableData) {
         self.textField.placeholder = placeholder
-        self.textField.text = data.text
+        self.textField.text = text
         switch data.textStatus {
         case .plain:
             self.textField.message = data.message

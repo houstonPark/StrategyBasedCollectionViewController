@@ -12,48 +12,48 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="EditProfileButtonCollectionCell" reuseIdentifier="EditProfileButtonCollectionCell" id="v8F-8x-Bnq" customClass="EditProfileButtonCollectionCell" customModule="StrategyBasedCollectionViewController" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="71" height="44"/>
+            <rect key="frame" x="0.0" y="0.0" width="182" height="146"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="I8y-ye-Nlz">
-                <rect key="frame" x="0.0" y="0.0" width="71" height="44"/>
+                <rect key="frame" x="0.0" y="0.0" width="182" height="146"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I3L-Ho-wep" customClass="PaddingLabel" customModule="StrategyBasedCollectionViewController" customModuleProvider="target">
-                        <rect key="frame" x="17" y="13" width="37.5" height="18"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tdI-dC-yQm">
+                        <rect key="frame" x="55.5" y="52" width="71" height="42"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9MM-vp-9HN">
+                                <rect key="frame" x="16" y="12" width="39" height="18"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <color key="textColor" name="gray70"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" name="gray10"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <color key="textColor" name="gray70"/>
-                        <nil key="highlightedColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="9MM-vp-9HN" secondAttribute="bottom" constant="12" id="VIC-K9-FGS"/>
+                            <constraint firstItem="9MM-vp-9HN" firstAttribute="top" secondItem="tdI-dC-yQm" secondAttribute="top" constant="12" id="aVh-by-THW"/>
+                            <constraint firstItem="9MM-vp-9HN" firstAttribute="leading" secondItem="tdI-dC-yQm" secondAttribute="leading" constant="16" id="piQ-4J-2Qz"/>
+                            <constraint firstAttribute="trailing" secondItem="9MM-vp-9HN" secondAttribute="trailing" constant="16" id="xL9-0g-Ycp"/>
+                        </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                 <integer key="value" value="22"/>
                             </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="topInset">
-                                <real key="value" value="12"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="bottomInset">
-                                <real key="value" value="12"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
-                                <real key="value" value="16"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
-                                <real key="value" value="16"/>
-                            </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
-                    </label>
+                    </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="I3L-Ho-wep" firstAttribute="centerY" secondItem="I8y-ye-Nlz" secondAttribute="centerY" id="Ny6-as-ZpV"/>
-                    <constraint firstItem="I3L-Ho-wep" firstAttribute="centerX" secondItem="I8y-ye-Nlz" secondAttribute="centerX" id="vNj-1V-dIX"/>
+                    <constraint firstItem="tdI-dC-yQm" firstAttribute="centerX" secondItem="I8y-ye-Nlz" secondAttribute="centerX" id="mVf-zg-FSG"/>
+                    <constraint firstItem="tdI-dC-yQm" firstAttribute="centerY" secondItem="I8y-ye-Nlz" secondAttribute="centerY" id="wmQ-k3-9Av"/>
                 </constraints>
             </collectionViewCellContentView>
-            <size key="customSize" width="510" height="109"/>
+            <size key="customSize" width="621" height="211"/>
             <connections>
-                <outlet property="buttonLabel" destination="I3L-Ho-wep" id="ssw-VA-wMv"/>
+                <outlet property="buttonLabel" destination="9MM-vp-9HN" id="BeA-Aw-t9a"/>
+                <outlet property="labelBackground" destination="tdI-dC-yQm" id="qoZ-pz-CeD"/>
             </connections>
-            <point key="canvasLocation" x="52.173913043478265" y="-79.352678571428569"/>
+            <point key="canvasLocation" x="68.115942028985515" y="-57.589285714285708"/>
         </collectionViewCell>
     </objects>
     <resources>

@@ -10,17 +10,17 @@ import Combine
 
 protocol EditProfileStrategy {
     
-    var sections: [SectionCase] { get }
+    var sections: [SectionCase] { get set }
     
     var items: CurrentValueSubject<[Int: [DiffableData]],Never> { get set }
-    
+
+    var cellIdentifiers: [String] { get }
+
     func cellSize(collectionViewSize: CGSize, sizeForItemAt indexPath: IndexPath) -> CGSize
     
     func editableCheckIfNeeded() -> Bool?
     
     func actionHandler(publishedText: String?, callFrom: CallFrom)
-    
-    func networkHandler(publishedText: String?, callFrom: CallFrom)
 }
 
 enum SectionCase: Hashable {
@@ -45,7 +45,8 @@ struct DiffableData: Hashable {
         self.message = message
         self.textStatus = textStatus
     }
-    
+
+    var id = UUID()
     var text: String?
     var message: String?
     var textStatus: status

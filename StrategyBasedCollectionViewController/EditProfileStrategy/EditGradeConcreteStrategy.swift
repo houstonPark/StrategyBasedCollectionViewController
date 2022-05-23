@@ -7,6 +7,7 @@
 
 import UIKit
 import Combine
+import QDSKit
 
 class EditGradeConcreteStrategy: EditProfileStrategy {
     
@@ -23,9 +24,14 @@ class EditGradeConcreteStrategy: EditProfileStrategy {
             DiffableData(text: "고등학교", textStatus: .plain),
         ]
     ])
+
+    var cellIdentifiers: [String] = [
+        "EditProfileButtonCollectionCell"
+    ]
     
     func cellSize(collectionViewSize: CGSize, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let label = UILabel()
+        label.font = QDS.Font.b2
         switch indexPath.section {
         case 0:
             guard let item = self.items.value[indexPath.section]?[indexPath.item] else { return .zero }
@@ -35,8 +41,8 @@ class EditGradeConcreteStrategy: EditProfileStrategy {
         case 1:
             return CGSize(width: collectionViewSize.width - commonInset, height: 1)
         case 2:
-            guard let item = self.items.value[indexPath.section]?[indexPath.item] else { return .zero }
-            label.text = item.text
+            guard let items = self.items.value[indexPath.section], items.count > indexPath.item else { return .zero }
+            label.text = items[indexPath.item].text
             label.sizeToFit()
             return CGSize(width: label.frame.width + commonInset, height: 44)
         default:
@@ -73,10 +79,5 @@ class EditGradeConcreteStrategy: EditProfileStrategy {
         default:
             break
         }
-    }
-    
-    func networkHandler(publishedText: String?, callFrom: CallFrom) {
-        
-    }
-    
+    }    
 }
