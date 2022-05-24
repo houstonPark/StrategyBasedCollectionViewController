@@ -15,65 +15,69 @@ class EditGradeConcreteStrategy: EditProfileStrategy {
     
     private var cancellable = Set<AnyCancellable>()
     
-    var sections: [SectionCase] = [.buttonCollection , .seperator, .buttonCollection]
+    var sections: [SectionCase] = [.button(0) , .seperator(1), .button(2)]
     
-    var items: CurrentValueSubject<[Int: [DiffableData]],Never> = .init([
-        0: [
-            DiffableData(text: "초등학교", textStatus: .plain),
-            DiffableData(text: "중학교", textStatus: .plain),
-            DiffableData(text: "고등학교", textStatus: .plain),
-        ]
-    ])
-
-    var cellIdentifiers: [String] = [
-        "EditProfileButtonCollectionCell"
-    ]
-    
-    func cellSize(collectionViewSize: CGSize, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func cellSize(collectionViewSize: CGSize, value: String, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let label = UILabel()
         label.font = QDS.Font.b2
-        switch indexPath.section {
-        case 0:
-            guard let item = self.items.value[indexPath.section]?[indexPath.item] else { return .zero }
-            label.text = item.text
+        switch self.sections[indexPath.section] {
+        case .button:
+            label.text = value
             label.sizeToFit()
             return CGSize(width: label.frame.width + commonInset, height: 44)
-        case 1:
+        case .seperator:
             return CGSize(width: collectionViewSize.width - commonInset, height: 1)
-        case 2:
-            guard let items = self.items.value[indexPath.section], items.count > indexPath.item else { return .zero }
-            label.text = items[indexPath.item].text
-            label.sizeToFit()
-            return CGSize(width: label.frame.width + commonInset, height: 44)
         default:
             return .zero
         }
     }
     
-    func actionHandler(publishedText: String?, callFrom: CallFrom) {
-        guard let publishedText = publishedText else {
-            return
+    func fetchDataSource() -> Future<[SectionCase : [DiffableData]], Error> {
+        return Future { promise in
+            promise(.success(
+                [
+                    .button(0):
+                        [
+                            DiffableData(text: "초등학교", textStatus: .plain),
+                            DiffableData(text: "중학교", textStatus: .plain),
+                            DiffableData(text: "고등학교", textStatus: .plain)
+                        ]
+                ]
+            ))
         }
-        switch publishedText {
-        case "초등학교":
-            self.items.value[1] = [DiffableData()]
-            self.items.value[2] = [
-                DiffableData(text: "1학년", textStatus: .plain),
-                DiffableData(text: "2학년", textStatus: .plain),
-                DiffableData(text: "3학년", textStatus: .plain),
-                DiffableData(text: "4학년", textStatus: .plain),
-                DiffableData(text: "5학년", textStatus: .plain),
-                DiffableData(text: "6학년", textStatus: .plain)
-            ]
-        case "중학교", "고등학교":
-            self.items.value[1] = [DiffableData()]
-            self.items.value[2] = [
-                DiffableData(text: "1학년", textStatus: .plain),
-                DiffableData(text: "2학년", textStatus: .plain),
-                DiffableData(text: "3학년", textStatus: .plain)
-            ]
-        default:
-            break
+    }
+    
+    func didValueChanged(_ previousValue: [SectionCase : [DiffableData]], newValue: String) -> Future<[SectionCase : [DiffableData]]?, Error> {
+        return Future { promise in
+            promise(.success(nil))
         }
-    }    
+    }
+    
+    func didSelect(_ previousValue: [SectionCase : [DiffableData]], value: String, at indexPath: IndexPath) -> Future<[SectionCase : [DiffableData]]?, Error> {
+        return Future { promise in
+            var items = previousValue
+            switch value {
+            case "초등학교":
+                items[.seperator(1)] = [DiffableData()]
+                items[.button(2)] = [
+                    DiffableData(text: "1학년", textStatus: .plain),
+                    DiffableData(text: "2학년", textStatus: .plain),
+                    DiffableData(text: "3학년", textStatus: .plain),
+                    DiffableData(text: "4학년", textStatus: .plain),
+                    DiffableData(text: "5학년", textStatus: .plain),
+                    DiffableData(text: "6학년", textStatus: .plain)
+                ]
+            case "중학교", "고등학교":
+                items[.seperator(1)] = [DiffableData()]
+                items[.button(2)] = [
+                    DiffableData(text: "1학년", textStatus: .plain),
+                    DiffableData(text: "2학년", textStatus: .plain),
+                    DiffableData(text: "3학년", textStatus: .plain)
+                ]
+            default:
+                promise(.success(nil))
+            }
+            promise(.success(items))
+        }
+    }
 }

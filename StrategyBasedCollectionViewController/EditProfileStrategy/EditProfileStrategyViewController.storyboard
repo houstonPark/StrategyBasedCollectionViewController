@@ -29,49 +29,14 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="EditProfileSperatorCell" id="C3q-cf-4hy">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="EditProfileEmptyListCell" id="qYN-L7-clh">
                                         <rect key="frame" x="16" y="0.0" width="382" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="gpy-Un-kqO">
-                                            <rect key="frame" x="0.0" y="0.0" width="382" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </collectionViewCellContentView>
-                                        <color key="backgroundColor" red="0.91764705882352937" green="0.91764705882352937" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
-                                    </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="EditProfileActivityIndicatorCell" id="4vY-wA-biJ">
-                                        <rect key="frame" x="180" y="44" width="54" height="48"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="aLe-YI-NUp">
-                                            <rect key="frame" x="0.0" y="0.0" width="54" height="48"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="zWB-T0-6wZ">
-                                                    <rect key="frame" x="17" y="14" width="20" height="20"/>
-                                                </activityIndicatorView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="zWB-T0-6wZ" firstAttribute="centerX" secondItem="aLe-YI-NUp" secondAttribute="centerX" id="FjI-hg-5T4"/>
-                                                <constraint firstItem="zWB-T0-6wZ" firstAttribute="centerY" secondItem="aLe-YI-NUp" secondAttribute="centerY" id="jHa-t9-aTr"/>
-                                            </constraints>
-                                        </collectionViewCellContentView>
-                                        <size key="customSize" width="54" height="48"/>
-                                    </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="EditProfileEmptyCell" id="wOU-hP-zeg">
-                                        <rect key="frame" x="16" y="92" width="382" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="ejK-tV-17z">
-                                            <rect key="frame" x="0.0" y="0.0" width="382" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </collectionViewCellContentView>
-                                    </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="EditProfileEmptyListCell" id="zU5-aa-f6W">
-                                        <rect key="frame" x="16" y="136" width="382" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="mEJ-6H-K9F">
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Lgv-9K-lFm">
                                             <rect key="frame" x="0.0" y="0.0" width="382" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="검색결과가 없습니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S4w-9b-DfI">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="검색 결과가 없습니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K1f-eU-Qaa">
                                                     <rect key="frame" x="0.0" y="0.0" width="382" height="44"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" name="gray40"/>
@@ -79,12 +44,199 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="S4w-9b-DfI" firstAttribute="top" secondItem="mEJ-6H-K9F" secondAttribute="top" id="Gg1-ga-dz3"/>
-                                                <constraint firstAttribute="bottom" secondItem="S4w-9b-DfI" secondAttribute="bottom" id="Isb-1m-EDn"/>
-                                                <constraint firstItem="S4w-9b-DfI" firstAttribute="leading" secondItem="mEJ-6H-K9F" secondAttribute="leading" id="XcG-ZX-YAc"/>
-                                                <constraint firstAttribute="trailing" secondItem="S4w-9b-DfI" secondAttribute="trailing" id="zZy-hq-xso"/>
+                                                <constraint firstItem="K1f-eU-Qaa" firstAttribute="top" secondItem="Lgv-9K-lFm" secondAttribute="top" id="7c8-ax-z2C"/>
+                                                <constraint firstItem="K1f-eU-Qaa" firstAttribute="leading" secondItem="Lgv-9K-lFm" secondAttribute="leading" id="G7j-UD-OEA"/>
+                                                <constraint firstAttribute="bottom" secondItem="K1f-eU-Qaa" secondAttribute="bottom" id="b26-UZ-mlg"/>
+                                                <constraint firstAttribute="trailing" secondItem="K1f-eU-Qaa" secondAttribute="trailing" id="r77-VI-8cZ"/>
                                             </constraints>
                                         </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="EditProfileListCell" id="YkN-W1-Z9M" customClass="EditProfileListCell" customModule="StrategyBasedCollectionViewController" customModuleProvider="target">
+                                        <rect key="frame" x="16" y="44" width="382" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="ImF-Fi-wKX">
+                                            <rect key="frame" x="0.0" y="0.0" width="382" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Mi-Sy-ql7">
+                                                    <rect key="frame" x="0.0" y="0.0" width="382" height="44"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="4Mi-Sy-ql7" secondAttribute="bottom" id="DS8-ai-h1r"/>
+                                                <constraint firstAttribute="trailing" secondItem="4Mi-Sy-ql7" secondAttribute="trailing" id="ZzM-uk-dPI"/>
+                                                <constraint firstItem="4Mi-Sy-ql7" firstAttribute="top" secondItem="ImF-Fi-wKX" secondAttribute="top" id="ddr-y1-bzz"/>
+                                                <constraint firstItem="4Mi-Sy-ql7" firstAttribute="leading" secondItem="ImF-Fi-wKX" secondAttribute="leading" id="jnP-yd-fzV"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="label" destination="4Mi-Sy-ql7" id="bvq-oH-ciz"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="EditProfileActivityIndicatorCell" id="c6I-3h-Z8o">
+                                        <rect key="frame" x="16" y="88" width="382" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="40z-5m-xzZ">
+                                            <rect key="frame" x="0.0" y="0.0" width="382" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="gRe-RA-Bkh">
+                                                    <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="16" id="2aB-gV-4d7"/>
+                                                        <constraint firstAttribute="height" constant="16" id="pay-3m-dN1"/>
+                                                    </constraints>
+                                                </activityIndicatorView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="gRe-RA-Bkh" firstAttribute="top" secondItem="40z-5m-xzZ" secondAttribute="top" id="82i-q8-YiS"/>
+                                                <constraint firstItem="gRe-RA-Bkh" firstAttribute="leading" secondItem="40z-5m-xzZ" secondAttribute="leading" id="lpk-jf-Hvs"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="EditProfileEmptyCell" id="IJa-9K-jI0">
+                                        <rect key="frame" x="16" y="132" width="382" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="7ah-ka-CyB">
+                                            <rect key="frame" x="0.0" y="0.0" width="382" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="EditProfileSperatorCell" id="9Zg-bS-xgY">
+                                        <rect key="frame" x="16" y="176" width="382" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="RrT-V6-fwg">
+                                            <rect key="frame" x="0.0" y="0.0" width="382" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="EditProfileButtonCollectionCell" id="2Yc-8u-QzY" customClass="EditProfileButtonCollectionCell" customModule="StrategyBasedCollectionViewController" customModuleProvider="target">
+                                        <rect key="frame" x="16" y="220" width="382" height="71"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="5Lx-bG-jCV">
+                                            <rect key="frame" x="0.0" y="0.0" width="382" height="71"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zhT-oU-THR">
+                                                    <rect key="frame" x="155.5" y="14.5" width="71" height="42"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KFg-IU-lix">
+                                                            <rect key="frame" x="16" y="12" width="39" height="18"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                            <color key="textColor" name="gray70"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstItem="KFg-IU-lix" firstAttribute="leading" secondItem="zhT-oU-THR" secondAttribute="leading" constant="16" id="Buv-tW-lQY"/>
+                                                        <constraint firstItem="KFg-IU-lix" firstAttribute="top" secondItem="zhT-oU-THR" secondAttribute="top" constant="12" id="KJB-7z-7zu"/>
+                                                        <constraint firstAttribute="bottom" secondItem="KFg-IU-lix" secondAttribute="bottom" constant="12" id="aLH-XR-qt9"/>
+                                                        <constraint firstAttribute="trailing" secondItem="KFg-IU-lix" secondAttribute="trailing" constant="16" id="lGQ-JX-edT"/>
+                                                        <constraint firstItem="KFg-IU-lix" firstAttribute="centerY" secondItem="zhT-oU-THR" secondAttribute="centerY" id="ldd-il-QaD"/>
+                                                        <constraint firstItem="KFg-IU-lix" firstAttribute="centerX" secondItem="zhT-oU-THR" secondAttribute="centerX" id="tsM-pU-w3o"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="22"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="zhT-oU-THR" firstAttribute="centerY" secondItem="5Lx-bG-jCV" secondAttribute="centerY" id="IHB-8q-N1u"/>
+                                                <constraint firstItem="zhT-oU-THR" firstAttribute="centerX" secondItem="5Lx-bG-jCV" secondAttribute="centerX" id="YUd-GY-gwr"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="382" height="71"/>
+                                        <connections>
+                                            <outlet property="buttonLabel" destination="KFg-IU-lix" id="18r-ex-x8H"/>
+                                            <outlet property="labelBackground" destination="zhT-oU-THR" id="Cpi-rq-eYS"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="EditProfileTextViewCell" id="N2R-Mg-V68" customClass="EditProfileTextViewCell" customModule="StrategyBasedCollectionViewController" customModuleProvider="target">
+                                        <rect key="frame" x="16" y="291" width="382" height="75"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Ct5-Wt-kU5">
+                                            <rect key="frame" x="0.0" y="0.0" width="382" height="75"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ae2-eU-f5x">
+                                                    <rect key="frame" x="0.0" y="0.0" width="382" height="75"/>
+                                                    <subviews>
+                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="aBN-LR-D3h">
+                                                            <rect key="frame" x="0.0" y="0.0" width="382" height="59"/>
+                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                            <color key="textColor" systemColor="labelColor"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                        </textView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iyO-hj-gvA">
+                                                            <rect key="frame" x="0.0" y="59" width="382" height="16"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="16" id="QYI-r7-rHD"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                            <color key="textColor" name="gray80"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="Ae2-eU-f5x" secondAttribute="bottom" id="W6V-VM-ARt"/>
+                                                <constraint firstItem="Ae2-eU-f5x" firstAttribute="leading" secondItem="Ct5-Wt-kU5" secondAttribute="leading" id="YD2-74-dQk"/>
+                                                <constraint firstItem="Ae2-eU-f5x" firstAttribute="top" secondItem="Ct5-Wt-kU5" secondAttribute="top" id="dUE-Pr-tZM"/>
+                                                <constraint firstAttribute="trailing" secondItem="Ae2-eU-f5x" secondAttribute="trailing" id="j2Y-l1-gy8"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="382" height="75"/>
+                                        <connections>
+                                            <outlet property="countingLabel" destination="iyO-hj-gvA" id="As1-gD-m6r"/>
+                                            <outlet property="textView" destination="aBN-LR-D3h" id="ivi-oU-y0f"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="EditProfileTextFieldCell" id="16D-4U-iWH" customClass="EditProfileTextFieldCell" customModule="StrategyBasedCollectionViewController" customModuleProvider="target">
+                                        <rect key="frame" x="16" y="366" width="382" height="96"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="BMQ-ue-dg7">
+                                            <rect key="frame" x="0.0" y="0.0" width="382" height="96"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="iQe-p7-XJu">
+                                                    <rect key="frame" x="0.0" y="0.0" width="382" height="96"/>
+                                                    <subviews>
+                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sRt-U2-P6G" customClass="QDSTextField" customModule="QDSKit">
+                                                            <rect key="frame" x="0.0" y="0.0" width="382" height="34"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <textInputTraits key="textInputTraits"/>
+                                                        </textField>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZTa-35-Wct">
+                                                            <rect key="frame" x="0.0" y="34" width="382" height="62"/>
+                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" id="bgR-g7-IUX"/>
+                                                            </constraints>
+                                                        </view>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="iQe-p7-XJu" secondAttribute="bottom" id="KPo-Od-OW5"/>
+                                                <constraint firstItem="iQe-p7-XJu" firstAttribute="top" secondItem="BMQ-ue-dg7" secondAttribute="top" id="OEB-5T-DkR"/>
+                                                <constraint firstAttribute="trailing" secondItem="iQe-p7-XJu" secondAttribute="trailing" id="o1Q-27-vfi"/>
+                                                <constraint firstItem="iQe-p7-XJu" firstAttribute="leading" secondItem="BMQ-ue-dg7" secondAttribute="leading" id="z7D-x4-Nw3"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="382" height="96"/>
+                                        <connections>
+                                            <outlet property="textField" destination="sRt-U2-P6G" id="OEB-J6-LrV"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
@@ -114,6 +266,15 @@
         <namedColor name="gray40">
             <color red="0.73725490196078436" green="0.73725490196078436" blue="0.73725490196078436" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="gray70">
+            <color red="0.45490196078431372" green="0.45490196078431372" blue="0.45490196078431372" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="gray80">
+            <color red="0.31372549019607843" green="0.31372549019607843" blue="0.31372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -19,23 +19,23 @@ import Combine
 protocol EditProfileStrategy {
     
     var sections: [SectionCase] { get set }
+
+    func cellSize(collectionViewSize: CGSize, value: String, sizeForItemAt indexPath: IndexPath) -> CGSize
+
+    func fetchDataSource() -> Future<[SectionCase: [DiffableData]], Error>
     
-    var items: CurrentValueSubject<[Int: [DiffableData]],Never> { get set }
+    func didValueChanged(_ previousValue: [SectionCase: [DiffableData]], newValue: String) -> Future<[SectionCase: [DiffableData]]?, Error>
 
-    func cellSize(collectionViewSize: CGSize, sizeForItemAt indexPath: IndexPath) -> CGSize
-
-    func fetchDataSource(_ value: String?)
-
-    func didValueChanged(oldValue: Any?, newValue: Any?)
-
-    func didSelect(collectionView: UICollectionView, at indexPath: IndexPath)
-
-    func reloadData()
+    func didSelect(_ previousValue: [SectionCase: [DiffableData]], value: String, at indexPath: IndexPath) -> Future<[SectionCase: [DiffableData]]?, Error>
 }
 
 //case viewDidLoad
 //case dequeueReuseCell
 //case selectCell
+
+struct EditProfileSection: Hashable {
+    
+}
 
 enum SectionCase: Hashable {
 
@@ -43,12 +43,12 @@ enum SectionCase: Hashable {
 
     case textView(placeholder: String)
 
-    case button
+    case button(_ sectionIndex: Int)
 
-    case seperator
+    case seperator(_ sectionIndex: Int)
 
     case custom(status: AsyncStatus)
-
+    
     var cellIdentifier: String {
         switch self {
         case .textField(_):
@@ -65,14 +65,23 @@ enum SectionCase: Hashable {
     }
 }
 
-enum AsyncStatus: String {
+enum AsyncStatus: Hashable {
     case none
     case loading
     case showList
     case emptyList
 
     var cellIdentifier: String {
-        ""
+        switch self {
+        case .none:
+            return "EditProfileEmptyCell"
+        case .loading:
+            return "EditProfileActivityIndicatorCell"
+        case .showList:
+            return "EditProfileListCell"
+        case .emptyList:
+            return "EditProfileEmptyListCell"
+        }
     }
 }
 

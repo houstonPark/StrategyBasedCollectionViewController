@@ -9,79 +9,75 @@ import UIKit
 import Combine
 
 class EditSchoolConcreteStrategy: EditProfileStrategy {
-
+    
+    private var commonInset: CGFloat = 32
+    
     private var cancellable = Set<AnyCancellable>()
-
-    var sections: [SectionCase] = [.textField(placeholder: "학교 이름을 검색해주세요."), .asyncList(status: .none)]
     
-    var items: CurrentValueSubject<[Int: [DiffableData]],Never> = .init([
-        0: [DiffableData()]
-    ])
-
-//    var cellIdentifiers: [String] = [
-//        "EditProfileTextFieldCell",
-//        "EditProfileListCell"
-//    ]
+    var sections: [SectionCase] = [.textField(placeholder: "학교 이름을 검색해주세요."), .custom(status: .none)]
     
-    func cellSize(collectionViewSize: CGSize, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func cellSize(collectionViewSize: CGSize, value: String, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.section == 0 {
-            return CGSize(width: collectionViewSize.width - 32, height: 44)
+            return CGSize(width: collectionViewSize.width - commonInset, height: 44)
         }
         else {
-            return CGSize(width: collectionViewSize.width - 32, height: 20)
+            return CGSize(width: collectionViewSize.width - commonInset, height: 20)
         }
     }
     
-    func actionHandler(publishedText: String?, callFrom: CallFrom) {
-        switch callFrom {
-        case .viewDidLoad:
-            return
-        case .dequeueReuseCell:
-            self.searching(text: publishedText ?? "")
-        case .selectCell:
-            self.selectUpdate(text: publishedText ?? "")
+    func fetchDataSource() -> Future<[SectionCase : [DiffableData]], Error> {
+        return Future { promise in
+            promise(.success(
+                [.textField(placeholder: "학교 이름을 검색해주세요."):  [DiffableData()]]
+            ))
         }
     }
-
-    private func searching(text: String) {
-        let apiItem = apiRequestItem(url: APIManger.shared.baseURLString, header: nil, parameter: nil, queryItems: [URLQueryItem(name: "s", value: text)], method: "GET")
-        self.sections[1] = .asyncList(status: .loading)
-        self.items.value[1] = [DiffableData()]
-        ViewModel<Drinks>().request(apiItem: apiItem)
-            .sink { completion in
-                switch completion {
-                case let .failure(error):
-                    print("<ERROR>", error.localizedDescription)
-                    return
-                case .finished:
-                    break
+    
+    func didValueChanged(_ previousValue: [SectionCase : [DiffableData]], newValue: String) -> Future<[SectionCase : [DiffableData]]?, Error> {
+        let apiItem = apiRequestItem(url: APIManger.shared.baseURLString, header: nil, parameter: nil, queryItems: [URLQueryItem(name: "s", value: newValue)], method: "GET")
+        var items = previousValue
+        self.sections[1] = .custom(status: .loading)
+        items[.custom(status: .loading)] = [DiffableData()]
+        return Future { promise in
+            ViewModel<Drinks>().request(apiItem: apiItem)
+                .sink { completion in
+                    switch completion {
+                    case let .failure(error):
+                        print("<ERROR>", error.localizedDescription)
+                        promise(.failure(error))
+                    case .finished:
+                        break
+                    }
+                } receiveValue: { drinks in
+                    guard let drinks = drinks.drinks else { return }
+                    if drinks.isEmpty {
+                        self.sections[1] = .custom(status: .emptyList)
+                        items[.custom(status: .emptyList)] = [DiffableData()]
+                    }
+                    else {
+                        self.sections[1] = .custom(status: .showList)
+                        var listItems: [DiffableData] = []
+                        drinks.forEach { drink in
+                            listItems.append(DiffableData(text: drink.strDrink, textStatus: .plain))
+                        }
+                        items[.custom(status: .showList)] = listItems
+                    }
+                    promise(.success(items))
                 }
-            } receiveValue: { Drinks in
-                self.items.value[1] = nil
-                guard let drinks = Drinks.drinks, drinks.isEmpty == false else {
-                    self.sections[1] = .asyncList(status: .emptyList)
-                    self.items.value[1] = [DiffableData()]
-                    return
-                }
-                self.sections[1] = .asyncList(status: .showList)
-                var listItems: [DiffableData] = []
-                drinks.forEach { drink in
-                    listItems.append(DiffableData(text: drink.strDrink, textStatus: .plain))
-                }
-                self.items.value[1] = listItems
-            }
-            .store(in: &self.cancellable)
-
+                .store(in: &self.cancellable)
+        }
     }
-
-    private func selectUpdate(text: String) {
-        switch self.sections[1] {
-        case let .asyncList(status):
-            if status == .showList {
-                
+    
+    func didSelect(_ previousValue: [SectionCase : [DiffableData]], value: String, at indexPath: IndexPath) -> Future<[SectionCase : [DiffableData]]?, Error> {
+        return Future { promise in
+            if self.sections[indexPath.section] == .custom(status: .showList) {
+                var items = previousValue
+                items[.textField(placeholder: "학교 이름을 검색해주세요.")] = [DiffableData(text: value, textStatus: .plain)]
+                promise(.success(items))
             }
-        default:
-            return
+            else {
+                promise(.success(nil))
+            }
         }
     }
 }

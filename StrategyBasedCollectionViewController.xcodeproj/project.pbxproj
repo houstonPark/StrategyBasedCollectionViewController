@@ -43,20 +43,16 @@
 		839970112827D87300686A72 /* FirstStrategyDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839970102827D87300686A72 /* FirstStrategyDetailCollectionViewCell.swift */; };
 		83A109AF281FD4280058CA5C /* FirstStrategyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A109AE281FD4280058CA5C /* FirstStrategyCollectionViewCell.swift */; };
 		83A287552837543B00ED9EF9 /* QDSKit in Frameworks */ = {isa = PBXBuildFile; productRef = 83A287542837543B00ED9EF9 /* QDSKit */; };
-		83A28757283758BB00ED9EF9 /* EditProfileTextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83A28756283758BB00ED9EF9 /* EditProfileTextFieldCell.xib */; };
 		83A2875928375BE800ED9EF9 /* EditProfileTextViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A2875828375BE800ED9EF9 /* EditProfileTextViewCell.swift */; };
-		83A2875B28375BF000ED9EF9 /* EditProfileTextViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83A2875A28375BF000ED9EF9 /* EditProfileTextViewCell.xib */; };
 		83AB164B2833AE2B00B66F34 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AB164A2833AE2B00B66F34 /* ViewModel.swift */; };
 		83BE9FBB2837794400F5B9B4 /* EditSchoolConcreteStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83BE9FBA2837794400F5B9B4 /* EditSchoolConcreteStrategy.swift */; };
 		83BE9FBD28377BF200F5B9B4 /* EditGradeConcreteStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83BE9FBC28377BF200F5B9B4 /* EditGradeConcreteStrategy.swift */; };
 		83C66093283B489D00AA261D /* EditProfileListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C66092283B489D00AA261D /* EditProfileListCell.swift */; };
-		83C66095283B48BE00AA261D /* EditProfileListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83C66094283B48BE00AA261D /* EditProfileListCell.xib */; };
 		83DFE4702828A8D2000F3E45 /* FirstStrategyDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DFE46F2828A8D2000F3E45 /* FirstStrategyDetail.swift */; };
 		83E86DE62831024700B4899F /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E86DE52831024700B4899F /* Extension.swift */; };
 		83F9E580282BA2C700E83921 /* SecondStrategyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F9E57F282BA2C700E83921 /* SecondStrategyViewModel.swift */; };
 		83F9E582282BBB3A00E83921 /* SecondStrategyCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F9E581282BBB3A00E83921 /* SecondStrategyCollectionViewController.swift */; };
 		83FB29E4283768EC00CD17B6 /* EditProfileButtonCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FB29E3283768EC00CD17B6 /* EditProfileButtonCollectionCell.swift */; };
-		83FB29E62837691000CD17B6 /* EditProfileButtonCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83FB29E52837691000CD17B6 /* EditProfileButtonCollectionCell.xib */; };
 		83FCFE49283249D600DB6ABE /* StrategyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FCFE48283249D500DB6ABE /* StrategyProtocol.swift */; };
 		83FCFE4B2832507300DB6ABE /* StrategyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FCFE4A2832507300DB6ABE /* StrategyViewController.swift */; };
 /* End PBXBuildFile section */
@@ -99,20 +95,16 @@
 		8399700E2827D79A00686A72 /* FirstStrategyDetailCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FirstStrategyDetailCollectionViewCell.xib; sourceTree = "<group>"; };
 		839970102827D87300686A72 /* FirstStrategyDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstStrategyDetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		83A109AE281FD4280058CA5C /* FirstStrategyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstStrategyCollectionViewCell.swift; sourceTree = "<group>"; };
-		83A28756283758BB00ED9EF9 /* EditProfileTextFieldCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditProfileTextFieldCell.xib; sourceTree = "<group>"; };
 		83A2875828375BE800ED9EF9 /* EditProfileTextViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileTextViewCell.swift; sourceTree = "<group>"; };
-		83A2875A28375BF000ED9EF9 /* EditProfileTextViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditProfileTextViewCell.xib; sourceTree = "<group>"; };
 		83AB164A2833AE2B00B66F34 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		83BE9FBA2837794400F5B9B4 /* EditSchoolConcreteStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSchoolConcreteStrategy.swift; sourceTree = "<group>"; };
 		83BE9FBC28377BF200F5B9B4 /* EditGradeConcreteStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGradeConcreteStrategy.swift; sourceTree = "<group>"; };
 		83C66092283B489D00AA261D /* EditProfileListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileListCell.swift; sourceTree = "<group>"; };
-		83C66094283B48BE00AA261D /* EditProfileListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditProfileListCell.xib; sourceTree = "<group>"; };
 		83DFE46F2828A8D2000F3E45 /* FirstStrategyDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstStrategyDetail.swift; sourceTree = "<group>"; };
 		83E86DE52831024700B4899F /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		83F9E57F282BA2C700E83921 /* SecondStrategyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondStrategyViewModel.swift; sourceTree = "<group>"; };
 		83F9E581282BBB3A00E83921 /* SecondStrategyCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondStrategyCollectionViewController.swift; sourceTree = "<group>"; };
 		83FB29E3283768EC00CD17B6 /* EditProfileButtonCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileButtonCollectionCell.swift; sourceTree = "<group>"; };
-		83FB29E52837691000CD17B6 /* EditProfileButtonCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditProfileButtonCollectionCell.xib; sourceTree = "<group>"; };
 		83FCFE48283249D500DB6ABE /* StrategyProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrategyProtocol.swift; sourceTree = "<group>"; };
 		83FCFE4A2832507300DB6ABE /* StrategyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrategyViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -139,13 +131,9 @@
 				833DB63F28371CC2004BA041 /* EditProfileStrategyViewController.swift */,
 				833DB64128372CA1004BA041 /* EditProfileStrategyViewController.storyboard */,
 				833E5E6C28372EEB006A05A9 /* EditProfileTextFieldCell.swift */,
-				83A28756283758BB00ED9EF9 /* EditProfileTextFieldCell.xib */,
 				83A2875828375BE800ED9EF9 /* EditProfileTextViewCell.swift */,
-				83A2875A28375BF000ED9EF9 /* EditProfileTextViewCell.xib */,
 				83FB29E3283768EC00CD17B6 /* EditProfileButtonCollectionCell.swift */,
-				83FB29E52837691000CD17B6 /* EditProfileButtonCollectionCell.xib */,
 				83C66092283B489D00AA261D /* EditProfileListCell.swift */,
-				83C66094283B48BE00AA261D /* EditProfileListCell.xib */,
 			);
 			path = EditProfileStrategy;
 			sourceTree = "<group>";
@@ -325,18 +313,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				837385462830AE560090C9C4 /* SecondStrategyMemoCell.xib in Resources */,
-				83A28757283758BB00ED9EF9 /* EditProfileTextFieldCell.xib in Resources */,
-				83A2875B28375BF000ED9EF9 /* EditProfileTextViewCell.xib in Resources */,
 				83572F2E281FC03500B329DE /* LaunchScreen.storyboard in Resources */,
 				83572F2B281FC03500B329DE /* Assets.xcassets in Resources */,
 				833DB64228372CA1004BA041 /* EditProfileStrategyViewController.storyboard in Resources */,
 				8399700F2827D79A00686A72 /* FirstStrategyDetailCollectionViewCell.xib in Resources */,
-				83C66095283B48BE00AA261D /* EditProfileListCell.xib in Resources */,
 				83989FD62833C138007EF525 /* ThumbnailCell.xib in Resources */,
 				83572F29281FC03400B329DE /* Main.storyboard in Resources */,
 				8316D77A28226915005C799F /* FirstStrategyCollectionViewCell.xib in Resources */,
 				8392ABCF282AB5E300805418 /* TextFieldHeaderView.xib in Resources */,
-				83FB29E62837691000CD17B6 /* EditProfileButtonCollectionCell.xib in Resources */,
 				838D9524283341510016E94D /* CategoryCell.xib in Resources */,
 				833BBBF9281FC45900362C84 /* FirstStrategyViewController.storyboard in Resources */,
 			);
