@@ -13,25 +13,22 @@ import Combine
 
 //  1. SectionCase와 Int를 1개로 표현해보자.
 //  2. AsyncList 없애기
-//  3. CellFrom을 없애기
 //  4. items 노출 없애보기.
 
 protocol EditProfileStrategy {
-    
+
+    typealias DataSource = [SectionCase: [DiffableData]]
+
     var sections: [SectionCase] { get set }
 
     func cellSize(collectionViewSize: CGSize, value: String, sizeForItemAt indexPath: IndexPath) -> CGSize
 
-    func fetchDataSource() -> Future<[SectionCase: [DiffableData]], Error>
+    func fetchDataSource() -> Future<DataSource, Error>
     
-    func didValueChanged(_ previousValue: [SectionCase: [DiffableData]], newValue: String) -> Future<[SectionCase: [DiffableData]]?, Error>
+    func didValueChanged(_ previousValue: DataSource, newValue: String) -> Future<DataSource?, Error>
 
-    func didSelect(_ previousValue: [SectionCase: [DiffableData]], value: String, at indexPath: IndexPath) -> Future<[SectionCase: [DiffableData]]?, Error>
+    func didSelect(_ previousValue: DataSource, value: String, at indexPath: IndexPath) -> Future<DataSource?, Error>
 }
-
-//case viewDidLoad
-//case dequeueReuseCell
-//case selectCell
 
 enum SectionCase: Hashable {
 
@@ -99,10 +96,4 @@ struct DiffableData: Hashable {
         case error
         case disable
     }
-}
-
-enum CallFrom {
-    case viewDidLoad
-    case dequeueReuseCell
-    case selectCell
 }

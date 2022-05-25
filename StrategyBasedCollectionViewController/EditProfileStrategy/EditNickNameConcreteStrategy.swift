@@ -22,7 +22,8 @@ class EditNickNameConcreteStrategy: EditProfileStrategy {
         return Future { promise in
             promise(.success(
                 [
-                    .textField(placeholder: "닉네임을 입력해주세요.") : [DiffableData(message: "닉네임은 한글, 영문, 숫자, 마침표(.), 대시(-), 밑줄(_)의 조합으로 최대 10자까지 가능합니다.", textStatus: .plain)]
+                    .textField(placeholder: "닉네임을 입력해주세요.") :
+                        [DiffableData(message: "닉네임은 한글, 영문, 숫자, 마침표(.), 대시(-), 밑줄(_)의 조합으로 최대 10자까지 가능합니다.", textStatus: .plain)]
                 ]
             ))
         }
