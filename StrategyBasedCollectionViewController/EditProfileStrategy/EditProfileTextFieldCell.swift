@@ -9,10 +9,6 @@ import UIKit
 import Combine
 import QDSKit
 
-class EditProfileCollectionViewCell: UICollectionViewCell {
-
-}
-
 class EditProfileTextFieldCell: UICollectionViewCell {
     
     @IBOutlet weak var textField: QDSTextField!

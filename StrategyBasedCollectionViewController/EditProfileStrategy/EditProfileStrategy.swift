@@ -33,10 +33,6 @@ protocol EditProfileStrategy {
 //case dequeueReuseCell
 //case selectCell
 
-struct EditProfileSection: Hashable {
-    
-}
-
 enum SectionCase: Hashable {
 
     case textField(placeholder: String)
@@ -48,7 +44,7 @@ enum SectionCase: Hashable {
     case seperator(_ sectionIndex: Int)
 
     case custom(status: AsyncStatus)
-    
+
     var cellIdentifier: String {
         switch self {
         case .textField(_):

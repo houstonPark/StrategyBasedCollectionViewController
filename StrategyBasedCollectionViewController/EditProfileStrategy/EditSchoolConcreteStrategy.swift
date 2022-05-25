@@ -36,8 +36,6 @@ class EditSchoolConcreteStrategy: EditProfileStrategy {
     func didValueChanged(_ previousValue: [SectionCase : [DiffableData]], newValue: String) -> Future<[SectionCase : [DiffableData]]?, Error> {
         let apiItem = apiRequestItem(url: APIManger.shared.baseURLString, header: nil, parameter: nil, queryItems: [URLQueryItem(name: "s", value: newValue)], method: "GET")
         var items = previousValue
-        self.sections[1] = .custom(status: .loading)
-        items[.custom(status: .loading)] = [DiffableData()]
         return Future { promise in
             ViewModel<Drinks>().request(apiItem: apiItem)
                 .sink { completion in
@@ -49,18 +47,17 @@ class EditSchoolConcreteStrategy: EditProfileStrategy {
                         break
                     }
                 } receiveValue: { drinks in
-                    guard let drinks = drinks.drinks else { return }
-                    if drinks.isEmpty {
-                        self.sections[1] = .custom(status: .emptyList)
-                        items[.custom(status: .emptyList)] = [DiffableData()]
-                    }
-                    else {
+                    if let drinks = drinks.drinks, drinks.isEmpty == false {
                         self.sections[1] = .custom(status: .showList)
                         var listItems: [DiffableData] = []
                         drinks.forEach { drink in
                             listItems.append(DiffableData(text: drink.strDrink, textStatus: .plain))
                         }
                         items[.custom(status: .showList)] = listItems
+                    }
+                    else {
+                        self.sections[1] = .custom(status: .emptyList)
+                        items[.custom(status: .emptyList)] = [DiffableData()]
                     }
                     promise(.success(items))
                 }

@@ -22,7 +22,7 @@ class EditProfileStrategyViewController: UIViewController {
     
     private var strategy: EditProfileStrategy!
     private var dataSource: UICollectionViewDiffableDataSource<SectionCase, DiffableData>?
-    private var items: CurrentValueSubject<[SectionCase: [DiffableData]], Never> = .init([:])
+    private var currentItems: [SectionCase: [DiffableData]] = [:]
     private var selectedItemInSection: CurrentValueSubject<[SectionCase: IndexPath], Never> = .init([:])
     private var editedText: [IndexPath: String] = [:]
 
@@ -36,25 +36,6 @@ class EditProfileStrategyViewController: UIViewController {
         super.viewDidLoad()
 
         self.setupDateSource()
-
-        self.items
-            .sink { items in
-                var snapshot = NSDiffableDataSourceSnapshot<SectionCase, DiffableData>()
-                snapshot.appendSections(self.strategy.sections)
-
-                guard items.isEmpty == false else { return }
-
-                self.strategy.sections.forEach { section in
-                    guard let items = items[section] else { return }
-                    snapshot.appendItems(items, toSection: section)
-                }
-                
-                DispatchQueue.main.async {
-                    self.dataSource?.apply(snapshot)
-                }
-            }
-            .store(in: &self.cancellabel)
-
 
         self.selectedItemInSection
             .sink { paths in
@@ -73,7 +54,7 @@ class EditProfileStrategyViewController: UIViewController {
             .sink { completion in
                 self.completionHandler(completion: completion)
             } receiveValue: { newItems in
-                self.items.send(newItems)
+                self.applySnapshot(items: newItems)
             }
             .store(in: &self.cancellabel)
         
@@ -101,6 +82,23 @@ class EditProfileStrategyViewController: UIViewController {
             return
         }
     }
+
+    private func applySnapshot(items: [SectionCase: [DiffableData]]) {
+        var snapshot = NSDiffableDataSourceSnapshot<SectionCase, DiffableData>()
+        snapshot.appendSections(self.strategy.sections)
+
+        guard items.isEmpty == false else { return }
+
+        self.strategy.sections.forEach { section in
+            guard let items = items[section] else { return }
+            snapshot.appendItems(items, toSection: section)
+        }
+
+        DispatchQueue.main.async {
+            self.dataSource?.apply(snapshot)
+        }
+        self.currentItems = items
+    }
     
     private func setupDateSource() {
         self.dataSource = UICollectionViewDiffableDataSource(collectionView: self.collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
@@ -114,12 +112,12 @@ class EditProfileStrategyViewController: UIViewController {
                     .sink { text in
                         guard let newText = text else { return }
                         self.editedText[indexPath] = text
-                        self.strategy.didValueChanged(self.items.value, newValue: newText)
+                        self.strategy.didValueChanged(self.currentItems, newValue: newText)
                             .sink { completion in
                                 self.completionHandler(completion: completion)
                             } receiveValue: { newItems in
                                 guard let newItems = newItems else { return }
-                                self.items.send(newItems)
+                                self.applySnapshot(items: newItems)
                             }
                             .store(in: &self.cancellabel)
                     }
@@ -134,12 +132,12 @@ class EditProfileStrategyViewController: UIViewController {
                     .sink { text in
                         guard let newText = text else { return }
                         self.editedText[indexPath] = text
-                        self.strategy.didValueChanged(self.items.value, newValue: newText)
+                        self.strategy.didValueChanged(self.currentItems, newValue: newText)
                             .sink { completion in
                                 self.completionHandler(completion: completion)
                             } receiveValue: { newItems in
                                 guard let newItems = newItems else { return }
-                                self.items.send(newItems)
+                                self.applySnapshot(items: newItems)
                             }
                             .store(in: &self.cancellabel)
                     }
@@ -174,8 +172,9 @@ class EditProfileStrategyViewController: UIViewController {
 extension EditProfileStrategyViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let value = self.items.value[self.strategy.sections[indexPath.section]]?[indexPath.item]
-        return self.strategy.cellSize(collectionViewSize: self.collectionView.frame.size, value: value?.text ?? "", sizeForItemAt: indexPath)
+        guard let items = self.currentItems[self.strategy.sections[indexPath.section]], items.count > indexPath.item else { return .zero }
+        let value = items[indexPath.item]
+        return self.strategy.cellSize(collectionViewSize: self.collectionView.frame.size, value: value.text ?? "", sizeForItemAt: indexPath)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -197,28 +196,29 @@ extension EditProfileStrategyViewController: UICollectionViewDelegate {
         let sectionCase = self.strategy.sections[indexPath.section]
         switch sectionCase {
         case .button:
-            guard let item = self.items.value[self.strategy.sections[indexPath.section]]?[indexPath.item] else { return }
+            guard let items = self.currentItems[self.strategy.sections[indexPath.section]], items.count > indexPath.item else { return }
+            let item = items[indexPath.item]
             guard let text = item.text else { return }
             self.selectedItemInSection.value[self.strategy.sections[indexPath.section]] = indexPath
-            self.strategy.didSelect(self.items.value, value: text, at: indexPath)
+            self.strategy.didSelect(self.currentItems, value: text, at: indexPath)
                 .sink { completion in
                     self.completionHandler(completion: completion)
                 } receiveValue: { newItems in
                     guard let newItems = newItems else { return }
-                    self.items.send(newItems)
+                    self.applySnapshot(items: newItems)
                 }
                 .store(in: &self.cancellabel)
 
         case let .custom(status):
-            guard let item = self.items.value[self.strategy.sections[indexPath.section]]?[indexPath.item] else { return }
+            guard let item = self.currentItems[self.strategy.sections[indexPath.section]]?[indexPath.item] else { return }
             guard let text = item.text else { return }
             if status == .showList {
-                self.strategy.didSelect(self.items.value, value: text, at: indexPath)
+                self.strategy.didSelect(self.currentItems, value: text, at: indexPath)
                     .sink { completion in
                         self.completionHandler(completion: completion)
                     } receiveValue: { newItems in
                         guard let newItems = newItems else { return }
-                        self.items.send(newItems)
+                        self.applySnapshot(items: newItems)
                     }
                     .store(in: &self.cancellabel)
             }
